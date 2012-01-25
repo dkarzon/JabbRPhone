@@ -122,7 +122,6 @@ namespace JabbrPhone.Pages
             if (e.RoomName.Equals(_model.Name, StringComparison.OrdinalIgnoreCase))
             {
                 Dispatcher.BeginInvoke(() => _model.Messages.Add(e.Message));
-
                 ScrollToLastMessage();
             }
         }

@@ -147,7 +147,7 @@ namespace JabbrPhone.ViewModels
                     return _allRooms.OrderByDescending(r => r.Count).ToObservableCollection();
                 }
 
-                return _allRooms.Where(r => r.Name.Contains(_search)).OrderByDescending(r => r.Count).ToObservableCollection();
+                return _allRooms.Where(r => r.Name.ToLower().Contains(_search.ToLower())).OrderByDescending(r => r.Count).ToObservableCollection();
             }
             set
             {

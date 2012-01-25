@@ -13,7 +13,7 @@ namespace JabbrPhone.ViewModels
             get { return _name; }
             set
             {
-                _name = value.ToLower();
+                _name = value;
                 NotifyPropertyChanged("Name");
             }
         }
