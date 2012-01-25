@@ -80,7 +80,7 @@
     		<controls:PivotItem Header="{Binding Name}" Margin="12,0">
     			<Grid Margin="0,12,0,0">
     				<ListBox x:Name="lsbMessages" Margin="12,0,0,72" ItemsSource="{Binding Messages}" ItemTemplate="{StaticResource MessageItemTemplate}"/>
-                    <TextBox x:Name="txtMessage" TextWrapping="Wrap" VerticalAlignment="Bottom" d:LayoutOverrides="Width" KeyUp="txtMessage_KeyUp"/>
+                    <TextBox InputScope="Text" x:Name="txtMessage" TextWrapping="Wrap" VerticalAlignment="Bottom" d:LayoutOverrides="Width" KeyUp="txtMessage_KeyUp"/>
     			</Grid>
     		</controls:PivotItem>
     		<controls:PivotItem Header="users" Margin="12,0">
