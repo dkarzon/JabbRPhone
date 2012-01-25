@@ -36,7 +36,7 @@ namespace JabbrPhone.Pages
             _model = new RoomViewModel(roomName);
             _model.Prog = this.GetProgressIndicator();
             this.DataContext = _model;
-            
+
             _model.SetStatus("Loading room...", true);
             txtMessage.IsEnabled = false;
 
@@ -119,9 +119,11 @@ namespace JabbrPhone.Pages
 
         private void NewMessageAdded(object sender, MessageAddedEventArgs e)
         {
-            if (e.RoomName == _model.Name)
+            if (e.RoomName.Equals(_model.Name, StringComparison.OrdinalIgnoreCase))
             {
-                _model.Messages.Add(e.Message);
+                Dispatcher.BeginInvoke(() => _model.Messages.Add(e.Message));
+
+                ScrollToLastMessage();
             }
         }
     }
