@@ -121,7 +121,10 @@ namespace JabbrPhone.Pages
         {
             if (e.RoomName == _model.Name)
             {
-                _model.Messages.Add(e.Message);
+                Dispatcher.BeginInvoke(() =>
+                    {
+                        _model.Messages.Add(e.Message);
+                    });
             }
         }
     }
