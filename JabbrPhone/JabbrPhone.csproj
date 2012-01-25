@@ -82,6 +82,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\ContentConverter.cs" />
     <Compile Include="Converters\FlagConverter.cs" />
     <Compile Include="Converters\DateTimeConverter.cs" />
     <Compile Include="Converters\GravatarConverter.cs" />

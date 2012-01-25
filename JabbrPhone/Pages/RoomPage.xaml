@@ -15,6 +15,7 @@
         <JabbrPhone_Converters:GravatarConverter x:Key="GravatarConverter"/>
         <JabbrPhone_Converters:DateTimeConverter x:Key="DateTimeConverter"/>
         <JabbrPhone_Converters:FlagConverter x:Key="FlagConverter"/>
+        <JabbrPhone_Converters:ContentConverter x:Key="ContentConverter"/>
         <DataTemplate x:Key="MessageItemTemplate">
 			<Grid>
 				<StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,12" Background="Black">
@@ -31,7 +32,7 @@
 							</TextBlock.Foreground>
 						</TextBlock>
 					</StackPanel>
-					<TextBlock TextWrapping="Wrap" Text="{Binding Content}"/>
+                    <TextBlock TextWrapping="Wrap" Text="{Binding Content, Converter={StaticResource ContentConverter}}"/>
 				</StackPanel>
 			</Grid>
 		</DataTemplate>
