@@ -1,0 +1,96 @@
+﻿<JabbrPhone_ViewModels:RoomViewModel xmlns:JabbrPhone_ViewModels="clr-namespace:JabbrPhone.ViewModels" xmlns:JabbrPhone_Models="clr-namespace:JabbrPhone.Models" xmlns:System="clr-namespace:System;assembly=mscorlib" Name="Phasellus consequat vitae cras per">
+	<JabbrPhone_ViewModels:RoomViewModel.Messages>
+		<JabbrPhone_Models:MessageModel Content="Nam aenean" Id="Maecenas class curae">
+			<JabbrPhone_Models:MessageModel.User>
+				<JabbrPhone_Models:UserModel Active="True" Brush="#FFA6D508" Country="Vestibulum curabitur aliquam mauris" Flag="Sit" Hash="Adipiscing praesent parturient" Id="Integer sed cras etiam quisque" IsAfk="False" Name="Adipiscing"/>
+			</JabbrPhone_Models:MessageModel.User>
+			<JabbrPhone_Models:MessageModel.When>
+				<System:DateTimeOffset/>
+			</JabbrPhone_Models:MessageModel.When>
+		</JabbrPhone_Models:MessageModel>
+		<JabbrPhone_Models:MessageModel Content="Dis aliquet consequat est" Id="Auctor fusce lorem">
+			<JabbrPhone_Models:MessageModel.User>
+				<JabbrPhone_Models:UserModel Active="True" Brush="#FF7B48D6" Country="Congue cursus blandit" Flag="Vel" Hash="Commodo hac conubia" Id="Dictum lectus leo cubilia bibendum" IsAfk="False" Name="Lacinia"/>
+			</JabbrPhone_Models:MessageModel.User>
+			<JabbrPhone_Models:MessageModel.When>
+				<System:DateTimeOffset/>
+			</JabbrPhone_Models:MessageModel.When>
+		</JabbrPhone_Models:MessageModel>
+		<JabbrPhone_Models:MessageModel Content="Ligula dignissim amet dictumst ante" Id="Dapibus proin eleifend elementum">
+			<JabbrPhone_Models:MessageModel.User>
+				<JabbrPhone_Models:UserModel Active="True" Brush="#FF0C1325" Country="Arcu litora" Flag="Nam" Hash="Adipiscing nec diam" Id="Parturient magnis non egestas" IsAfk="False" Name="Parturient"/>
+			</JabbrPhone_Models:MessageModel.User>
+			<JabbrPhone_Models:MessageModel.When>
+				<System:DateTimeOffset/>
+			</JabbrPhone_Models:MessageModel.When>
+		</JabbrPhone_Models:MessageModel>
+		<JabbrPhone_Models:MessageModel Content="Mattis per sed mauris" Id="Vestibulum dolor">
+			<JabbrPhone_Models:MessageModel.User>
+				<JabbrPhone_Models:UserModel Active="True" Brush="#FF62D6F5" Country="Sem fringilla adipiscing sit feugiat" Flag="Sed" Hash="Sed dis" Id="Mollis montes gravida faucibus" IsAfk="False" Name="Pellentesque"/>
+			</JabbrPhone_Models:MessageModel.User>
+			<JabbrPhone_Models:MessageModel.When>
+				<System:DateTimeOffset/>
+			</JabbrPhone_Models:MessageModel.When>
+		</JabbrPhone_Models:MessageModel>
+		<JabbrPhone_Models:MessageModel Content="Ipsum justo" Id="Ornare platea iaculis">
+			<JabbrPhone_Models:MessageModel.User>
+				<JabbrPhone_Models:UserModel Active="True" Brush="#FF4512F0" Country="Eget vestibulum inceptos" Flag="Dis" Hash="Lacus hendrerit himenaeos" Id="Lorem hac rutrum" IsAfk="False" Name="Vestibulum"/>
+			</JabbrPhone_Models:MessageModel.User>
+			<JabbrPhone_Models:MessageModel.When>
+				<System:DateTimeOffset/>
+			</JabbrPhone_Models:MessageModel.When>
+		</JabbrPhone_Models:MessageModel>
+		<JabbrPhone_Models:MessageModel Content="Leo mus lacinia" Id="Imperdiet magna eros interdum">
+			<JabbrPhone_Models:MessageModel.User>
+				<JabbrPhone_Models:UserModel Active="True" Brush="#FF744640" Country="Massa semper lobortis" Flag="Est" Hash="Malesuada sociis" Id="Laoreet taciti tellus per" IsAfk="False" Name="Laoreet"/>
+			</JabbrPhone_Models:MessageModel.User>
+			<JabbrPhone_Models:MessageModel.When>
+				<System:DateTimeOffset/>
+			</JabbrPhone_Models:MessageModel.When>
+		</JabbrPhone_Models:MessageModel>
+		<JabbrPhone_Models:MessageModel Content="Penatibus porttitor pharetra" Id="Placerat nisl">
+			<JabbrPhone_Models:MessageModel.User>
+				<JabbrPhone_Models:UserModel Active="True" Brush="#FF0D3B96" Country="Natoque posuere tempus potenti" Flag="Hac" Hash="Tincidunt pulvinar nunc sem odio" Id="Tortor neque sagittis" IsAfk="False" Name="Ullamcorper"/>
+			</JabbrPhone_Models:MessageModel.User>
+			<JabbrPhone_Models:MessageModel.When>
+				<System:DateTimeOffset/>
+			</JabbrPhone_Models:MessageModel.When>
+		</JabbrPhone_Models:MessageModel>
+		<JabbrPhone_Models:MessageModel Content="Senectus tristique" Id="Rhoncus sodales ultricies">
+			<JabbrPhone_Models:MessageModel.User>
+				<JabbrPhone_Models:UserModel Active="True" Brush="#FF0BAAFD" Country="Viverra vel nam pede aliquam" Flag="Leo" Hash="Parturient suscipit integer quisque" Id="Venenatis vestibulum" IsAfk="False" Name="Sollicitudin"/>
+			</JabbrPhone_Models:MessageModel.User>
+			<JabbrPhone_Models:MessageModel.When>
+				<System:DateTimeOffset/>
+			</JabbrPhone_Models:MessageModel.When>
+		</JabbrPhone_Models:MessageModel>
+		<JabbrPhone_Models:MessageModel Content="Torquent aliquet blandit" Id="Vestibulum quis nulla vulputate">
+			<JabbrPhone_Models:MessageModel.User>
+				<JabbrPhone_Models:UserModel Active="True" Brush="#FFB0C80F" Country="Commodo dis adipiscing ultrices vehicula" Flag="Mus" Hash="Volutpat parturient maecenas" Id="Vestibulum turpis vestibulum varius praesent" IsAfk="False" Name="Pellentesque"/>
+			</JabbrPhone_Models:MessageModel.User>
+			<JabbrPhone_Models:MessageModel.When>
+				<System:DateTimeOffset/>
+			</JabbrPhone_Models:MessageModel.When>
+		</JabbrPhone_Models:MessageModel>
+		<JabbrPhone_Models:MessageModel Content="Conubia cubilia bibendum dictumst aenean" Id="Dapibus egestas">
+			<JabbrPhone_Models:MessageModel.User>
+				<JabbrPhone_Models:UserModel Active="True" Brush="#FFB3770B" Country="Leo mus" Flag="Nec" Hash="Eleifend purus euismod" Id="Feugiat risus" IsAfk="False" Name="Quis"/>
+			</JabbrPhone_Models:MessageModel.User>
+			<JabbrPhone_Models:MessageModel.When>
+				<System:DateTimeOffset/>
+			</JabbrPhone_Models:MessageModel.When>
+		</JabbrPhone_Models:MessageModel>
+	</JabbrPhone_ViewModels:RoomViewModel.Messages>
+	<JabbrPhone_ViewModels:RoomViewModel.Users>
+		<JabbrPhone_Models:UserModel Active="True" Brush="#FF64B308" Country="Sed duis sem gravida mauris" Flag="Non" Hash="Vestibulum inceptos nullam" Id="Sit iaculis adipiscing dignissim interdum" IsAfk="False" Name="Suspendisse"/>
+		<JabbrPhone_Models:UserModel Active="True" Brush="#FF2A8025" Country="Pharetra placerat" Flag="Per" Hash="Pulvinar ante curae" Id="Vestibulum facilisis fermentum fringilla arcu" IsAfk="False" Name="Vestibulum"/>
+		<JabbrPhone_Models:UserModel Active="True" Brush="#FF1A8763" Country="Habitasse adipiscing" Flag="Sed" Hash="Vel senectus hendrerit himenaeos vestibulum" Id="Imperdiet sociosqu" IsAfk="False" Name="Condimentum"/>
+		<JabbrPhone_Models:UserModel Active="True" Brush="#FFBA547E" Country="Potenti auctor" Flag="Sem" Hash="Fusce nam porttitor" Id="Parturient lorem" IsAfk="False" Name="Natoque"/>
+		<JabbrPhone_Models:UserModel Active="True" Brush="#FF4F34A0" Country="Elit rhoncus" Flag="Sit" Hash="Erat cursus eros" Id="Vestibulum suscipit viverra nibh" IsAfk="False" Name="Fermentum"/>
+		<JabbrPhone_Models:UserModel Active="True" Brush="#FF99C845" Country="Nisi adipiscing torquent sed integer" Flag="Vel" Hash="Proin parturient" Id="Vehicula nisl vivamus" IsAfk="False" Name="Scelerisque"/>
+		<JabbrPhone_Models:UserModel Active="True" Brush="#FFACB174" Country="Augue aliquet dolor" Flag="Nam" Hash="Est fames lectus" Id="Blandit volutpat ultricies" IsAfk="False" Name="Sociosqu"/>
+		<JabbrPhone_Models:UserModel Active="True" Brush="#FF4BE765" Country="Commodo conubia" Flag="Sed" Hash="Dapibus parturient vestibulum venenatis" Id="Libero pede egestas nec vulputate" IsAfk="False" Name="Lorem"/>
+		<JabbrPhone_Models:UserModel Active="True" Brush="#FF73C3B6" Country="Ipsum vestibulum" Flag="Dis" Hash="Euismod bibendum quam per lacus" Id="Convallis adipiscing lorem dignissim quis" IsAfk="False" Name="Adipiscing"/>
+		<JabbrPhone_Models:UserModel Active="True" Brush="#FF52DDF0" Country="Urna litora" Flag="Est" Hash="Cras feugiat massa eleifend duis" Id="Elementum gravida vestibulum" IsAfk="False" Name="Mattis"/>
+	</JabbrPhone_ViewModels:RoomViewModel.Users>
+</JabbrPhone_ViewModels:RoomViewModel>
