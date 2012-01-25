@@ -44,11 +44,7 @@ namespace JabbrPhone
             _model.SetStatus("Connecting to Server...", true);
 
             //Setup the signalR events!
-            App.ChatHub.On<MessageModel, string>("AddMessage",
-                (message, roomName) =>
-                {
-                    ((App)App.Current).EventManager.OnNewMessage(message, roomName);
-                });
+            App.SetupEvents();
 
             //Server sent events dont work at the moment...
             App.JabbrConnection.Start(Transport.LongPolling).ContinueWith(startTask =>

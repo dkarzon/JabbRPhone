@@ -100,7 +100,7 @@
         	</controls:Pivot>
         	<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="JABBRPHONE v0.1" VerticalAlignment="Top" Margin="24,12,0,0"/>
         </Grid>
-        <Grid Grid.Row="1" Visibility="{Binding ShowLogin, Converter={StaticResource BooleanToVisibilityConverter}}" Background="Black" d:IsHidden="True">
+        <Grid Grid.Row="1" Visibility="{Binding ShowLogin, Converter={StaticResource BooleanToVisibilityConverter}}" Background="Black">
         	<ScrollViewer>
         		<StackPanel Margin="0" Height="768" Width="480">
         			<TextBlock TextWrapping="Wrap" Text="LOGIN" Style="{StaticResource PhoneTextTitle1Style}">
@@ -112,7 +112,7 @@
         			<TextBlock TextWrapping="Wrap" Text="username" Style="{StaticResource PhoneTextSmallStyle}" Margin="12,12,12,0"/>
         			<TextBox TextWrapping="Wrap" InputScope="Default" Text="{Binding LoginUsername, Mode=TwoWay}"/>
         			<TextBlock TextWrapping="Wrap" Text="password" Style="{StaticResource PhoneTextSmallStyle}" Margin="12,12,12,0"/>
-        			<PasswordBox Password="{Binding LoginPassword}"/>
+        			<PasswordBox Password="{Binding LoginPassword, Mode=TwoWay}"/>
         			<TextBlock TextWrapping="Wrap" Text="{Binding LoginMessage}" Style="{StaticResource PhoneTextSubtleStyle}"/>
         			<Button x:Name="btn_Login" Content="Login" Click="btn_Login_Click"/>
         		</StackPanel>

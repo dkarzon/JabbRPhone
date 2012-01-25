@@ -14,6 +14,7 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using JabbrPhone.Helpers;
 using SignalR.Client.Hubs;
+using JabbrPhone.Models;
 
 namespace JabbrPhone
 {
@@ -67,6 +68,21 @@ namespace JabbrPhone
             EventManager = new SignalRHelper();
 
             DispatcherHelper.Initialize();
+        }
+
+        /// <summary>
+        /// This method should be run before the signalR connection is started
+        /// to subscribe to the events
+        /// </summary>
+        internal static void SetupEvents()
+        {
+            App.ChatHub.On<MessageModel, string>("AddMessage",
+                (message, roomName) =>
+                {
+                    ((App)App.Current).EventManager.OnNewMessage(message, roomName);
+                });
+
+            //Other events we need to watch?
         }
 
         // Code to execute when the application is launching (eg, from Start)
