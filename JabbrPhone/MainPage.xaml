@@ -75,32 +75,24 @@
         <!--ContentPanel - place additional content here-->
 <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="0" Visibility="{Binding ShowRooms, Converter={StaticResource BooleanToVisibilityConverter}}">
-        	<controls:Pivot x:Name="pvtMain" Margin="0,12,0,0" Title="" d:LayoutOverrides="Height">
-        		<controls:Pivot.Foreground>
+        	<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="JABBRPHONE v0.1" VerticalAlignment="Top" Margin="12,12,0,0" FontSize="18.667"/>
+        	<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="rooms" VerticalAlignment="Top" Style="{StaticResource PhoneTextTitle2Style}" Margin="12,37,0,0" FontSize="42.667">
+        		<TextBlock.Foreground>
         			<SolidColorBrush Color="{StaticResource PhoneAccentColor}"/>
-        		</controls:Pivot.Foreground>
-        		<controls:PivotItem Header="lobby" Margin="12,0">
-        			<Grid Margin="12,0,0,0">
-        				<ListBox Margin="12,0,12,72" ItemsSource="{Binding LobbyMessages}"/>
-        				<TextBox x:Name="txtMessage" TextWrapping="Wrap" VerticalAlignment="Bottom" KeyUp="txtMessage_KeyUp"/>
-        			</Grid>
-        		</controls:PivotItem>
-        		<controls:PivotItem Header="rooms" Margin="12,0">
-        			<Grid Margin="12,0,0,0">
-        				 <Grid.RowDefinitions>
-				         	<RowDefinition Height="Auto"/>
-				            <RowDefinition Height="*"/>
-				    	</Grid.RowDefinitions>
-        				<TextBox x:Name="txtSearch" TextWrapping="Wrap" Margin="0" Height="72"
-                                 Visibility="{Binding ShowSearch, Converter={StaticResource BooleanToVisibilityConverter}}"
-                                 Text="{Binding Search, Mode=TwoWay}" Binding:TextBinding.UpdateSourceOnChange="True" />
-        				<ListBox x:Name="lsbRooms" Grid.Row="1" ItemTemplate="{StaticResource RoomsItemTemplate}" ItemsSource="{Binding Rooms}" SelectionChanged="lsbRooms_SelectionChanged"/> 			
-					</Grid>
-        		</controls:PivotItem>
-        	</controls:Pivot>
-        	<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="JABBRPHONE v0.1" VerticalAlignment="Top" Margin="24,12,0,0"/>
+        		</TextBlock.Foreground>
+        	</TextBlock>
+        	<Grid Margin="0,98,0,0">
+        		<Grid.RowDefinitions>
+        			<RowDefinition Height="Auto"/>
+        			<RowDefinition Height="*"/>
+        		</Grid.RowDefinitions>
+        		<TextBox x:Name="txtSearch" TextWrapping="Wrap" Margin="0" Height="72"
+        			Visibility="{Binding ShowSearch, Converter={StaticResource BooleanToVisibilityConverter}}"
+        			Text="{Binding Search, Mode=TwoWay}" Binding:TextBinding.UpdateSourceOnChange="True" />
+        		<ListBox x:Name="lsbRooms" Grid.Row="1" ItemTemplate="{StaticResource RoomsItemTemplate}" ItemsSource="{Binding Rooms}" SelectionChanged="lsbRooms_SelectionChanged" BorderThickness="12,0"/> 			
+        	</Grid>
         </Grid>
-        <Grid Grid.Row="1" Visibility="{Binding ShowLogin, Converter={StaticResource BooleanToVisibilityConverter}}" Background="Black">
+        <Grid Grid.Row="1" Visibility="{Binding ShowLogin, Converter={StaticResource BooleanToVisibilityConverter}}" Background="Black" d:IsHidden="True">
         	<ScrollViewer>
         		<StackPanel Margin="0" Height="768" Width="480">
         			<TextBlock TextWrapping="Wrap" Text="LOGIN" Style="{StaticResource PhoneTextTitle1Style}">

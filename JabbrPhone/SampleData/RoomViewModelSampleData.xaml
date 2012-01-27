@@ -64,14 +64,6 @@
 				<System:DateTimeOffset/>
 			</JabbrPhone_Models:MessageModel.When>
 		</JabbrPhone_Models:MessageModel>
-		<JabbrPhone_Models:MessageModel Content="Torquent aliquet blandit" Id="Vestibulum quis nulla vulputate">
-			<JabbrPhone_Models:MessageModel.User>
-				<JabbrPhone_Models:UserModel Active="True" Brush="#FFB0C80F" Country="Commodo dis adipiscing ultrices vehicula" Flag="Mus" Hash="Volutpat parturient maecenas" Id="Vestibulum turpis vestibulum varius praesent" IsAfk="False" Name="Pellentesque"/>
-			</JabbrPhone_Models:MessageModel.User>
-			<JabbrPhone_Models:MessageModel.When>
-				<System:DateTimeOffset/>
-			</JabbrPhone_Models:MessageModel.When>
-		</JabbrPhone_Models:MessageModel>
 		<JabbrPhone_Models:MessageModel Content="Conubia cubilia bibendum dictumst aenean" Id="Dapibus egestas">
 			<JabbrPhone_Models:MessageModel.User>
 				<JabbrPhone_Models:UserModel Active="True" Brush="#FFB3770B" Country="Leo mus" Flag="Nec" Hash="Eleifend purus euismod" Id="Feugiat risus" IsAfk="False" Name="Quis"/>

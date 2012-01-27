@@ -27,6 +27,14 @@ namespace JabbrPhone.Pages
             ((App)App.Current).EventManager.MessageAdded += NewMessageAdded;
         }
 
+        protected override void OnNavigatedFrom(System.Windows.Navigation.NavigationEventArgs e)
+        {
+            base.OnNavigatedFrom(e);
+
+            //Stop listening for the event (Sometimes caused duplicate messages)
+            ((App)App.Current).EventManager.MessageAdded -= NewMessageAdded;
+        }
+
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);

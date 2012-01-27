@@ -7,6 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls" 
     xmlns:JabbrPhone_Converters="clr-namespace:JabbrPhone.Converters" 
+    xmlns:net="clr-namespace:System.Net;assembly=System.Net"
     x:Class="JabbrPhone.Pages.RoomPage"
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"

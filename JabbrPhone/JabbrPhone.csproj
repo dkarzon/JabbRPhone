@@ -68,13 +68,13 @@
     <Reference Include="SignalR.Client.WP7">
       <HintPath>..\lib\SignalR.Client.WP7.dll</HintPath>
     </Reference>
+    <Reference Include="System.Net" />
     <Reference Include="System.Threading.Tasks.WP71">
       <HintPath>..\lib\System.Threading.Tasks.WP71.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows" />
     <Reference Include="system" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Net" />
     <Reference Include="System.Xml" />
     <Reference Include="mscorlib.extensions" />
   </ItemGroup>

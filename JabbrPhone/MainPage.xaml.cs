@@ -20,17 +20,16 @@ namespace JabbrPhone
         public MainPage()
         {
             InitializeComponent();
-        }
-
-        protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
 
             _model = new HomeViewModel();
-            _model.Prog = this.GetProgressIndicator();
             _model.ShowCreateRoom = false;
             this.DataContext = _model;
 
+            InitializeJabbr();
+        }
+
+        private void InitializeJabbr()
+        {
             App.JabbrConnection = new HubConnection("http://jabbr.net/");
             App.ChatHub = App.JabbrConnection.CreateProxy("JabbR.Chat");
 
@@ -40,7 +39,7 @@ namespace JabbrPhone
             {
                 App.ChatHub["id"] = id;
             }
-            
+
             _model.SetStatus("Connecting to Server...", true);
 
             //Setup the signalR events!
@@ -48,13 +47,26 @@ namespace JabbrPhone
 
             //Server sent events dont work at the moment...
             App.JabbrConnection.Start(Transport.LongPolling).ContinueWith(startTask =>
-                {
-                    App.ChatHub.Invoke<bool>("Join")
-                        .ContinueWith(task =>
-                            {
-                                Join(task);
-                            });
-                });
+            {
+                App.ChatHub.Invoke<bool>("Join")
+                    .ContinueWith(task =>
+                    {
+                        Join(task);
+                    });
+            });
+        }
+
+        protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            if (_model != null && _model.Prog == null)
+            {
+                _model.Prog = this.GetProgressIndicator();
+            }
+
+            //upon return deselect the room we were just in
+            lsbRooms.SelectedIndex = -1;
         }
 
         protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
@@ -80,10 +92,19 @@ namespace JabbrPhone
                 _model.ShowRooms = true;
                 //Load rooms
                 LoadRooms();
+
+                Dispatcher.BeginInvoke(() =>
+                    {
+                        ApplicationBar.IsVisible = true;
+                    });
             }
             else
             {
                 _model.ShowLogin = true;
+                Dispatcher.BeginInvoke(() =>
+                {
+                    ApplicationBar.IsVisible = false;
+                });
                 _model.ClearStatus();
             }
         }
@@ -120,6 +141,10 @@ namespace JabbrPhone
                             Storage.SettingsStorage.SaveSetting("id", App.ChatHub["id"].ToString());
                             //Now try and load rooms
                             LoadRooms();
+                            Dispatcher.BeginInvoke(() =>
+                                {
+                                    ApplicationBar.IsVisible = true;
+                                });
                         }
                         else
                         {
@@ -154,10 +179,6 @@ namespace JabbrPhone
             }
             else
             {
-                if (pvtMain.SelectedIndex != 1)
-                {
-                    pvtMain.SelectedIndex = 1;
-                }
                 txtSearch.Focus();
             }
         }
@@ -200,41 +221,6 @@ namespace JabbrPhone
                     _model.CreateRoomName = string.Empty;
 
                     NavigationService.Navigate(new Uri(string.Format("/Pages/RoomPage.xaml?name={0}", newroom), UriKind.RelativeOrAbsolute));
-                });
-        }
-
-        private void txtMessage_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter)
-            {
-                SendMessage(txtMessage.Text);
-            }
-        }
-
-        private void SendMessage(string content)
-        {
-            _model.SetStatus("Sending...", true);
-
-            App.ChatHub.Invoke("Send", content)
-                .ContinueWith((task) =>
-                {
-                    //Add this 1 to the list?
-                    if (task.IsFaulted)
-                    {
-                        try
-                        {
-                            _model.SetStatus(task.Exception.Message, false, 2000);
-                        }
-                        catch { }
-                    }
-                    else
-                    {
-                        _model.SetStatus("Message sent!", false, 2000);
-                        Dispatcher.BeginInvoke(() =>
-                        {
-                            txtMessage.Text = string.Empty;
-                        });
-                    }
                 });
         }
 

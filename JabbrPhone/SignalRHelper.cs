@@ -15,6 +15,9 @@ namespace JabbrPhone
         {
             if (MessageAdded != null)
             {
+                //For some reason When comes through localized here.
+                message.When = message.When.ToUniversalTime();
+
                 MessageAdded(App.ChatHub, new MessageAddedEventArgs
                 {
                     Message = message,

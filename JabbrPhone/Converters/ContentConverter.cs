@@ -18,7 +18,9 @@ namespace JabbrPhone.Converters
         {
             if (value == null) return null;
 
+            //This kills the designer for some reason...
             return System.Net.HttpUtility.HtmlDecode(value.ToString());
+			//return value;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
