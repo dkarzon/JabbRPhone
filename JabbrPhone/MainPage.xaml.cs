@@ -190,11 +190,19 @@ namespace JabbrPhone
 
         private void menuLogout_Click(object sender, System.EventArgs e)
         {
-            Storage.SettingsStorage.SaveSetting("id", null);
+            _model.SetStatus("Logging out...", true);
 
-            _model.IsLoggedIn = false;
-            _model.ShowLogin = true;
-            _model.ShowRooms = false;
+            App.ChatHub.Invoke("Send", "/logout")
+                .ContinueWith(task =>
+                    {
+                        Storage.SettingsStorage.SaveSetting("id", null);
+
+                        _model.IsLoggedIn = false;
+                        _model.ShowLogin = true;
+                        _model.ShowRooms = false;
+
+                        _model.ClearStatus();
+                    });
         }
 
         private void btnCreateRoom_Click(object sender, System.EventArgs e)
