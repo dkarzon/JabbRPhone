@@ -48,7 +48,6 @@
 
     <Target Name="BuildPackage" DependsOnTargets="CheckPrerequisites">
         <Exec Command="$(BuildCommand)"
-              LogStandardErrorAsError="true"
-              WorkingDirectory="$(NuGetToolsPath)" />
+              LogStandardErrorAsError="true" />
     </Target>
 </Project>
