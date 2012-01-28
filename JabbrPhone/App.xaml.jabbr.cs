@@ -38,9 +38,13 @@ namespace JabbrPhone
                     ((App)App.Current).EventManager.OnNewMessage(message, roomName);
                 });
 
-            //Other events we need to watch?
+            App.ChatHub.On<string, string, string>("sendPrivateMessage",
+                (from, to, message) =>
+                {
+                    ((App)App.Current).EventManager.OnPrivateMessage(from, to, message);
+                });
 
-            //TODO - User messages
+            //Other events we need to watch?
         }
 
         /// <summary>
@@ -65,7 +69,6 @@ namespace JabbrPhone
             //Server sent events dont work at the moment...
             App.JabbrConnection.Start(Transport.LongPolling)
                 .ContinueWith(startContinue);
-
         }
 
     }

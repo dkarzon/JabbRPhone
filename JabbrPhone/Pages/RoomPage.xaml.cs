@@ -13,6 +13,7 @@ using Microsoft.Phone.Controls;
 using JabbrPhone.Models;
 using JabbrPhone.ViewModels;
 using JabbrPhone.Extensions;
+using JabbrPhone.Events;
 
 namespace JabbrPhone.Pages
 {
