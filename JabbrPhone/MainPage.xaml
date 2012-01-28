@@ -44,10 +44,11 @@
  
     <!--Sample code showing usage of ApplicationBar-->
     <phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+        <shell:ApplicationBar IsVisible="False" IsMenuEnabled="True">
             <shell:ApplicationBarIconButton x:Name="btnCreateRoom" IconUri="/icons/appbar.add.rest.png" Text="create room" Click="btnCreateRoom_Click"/>
             <shell:ApplicationBarIconButton x:Name="btnRefresh" IconUri="/icons/appbar.refresh.rest.png" Text="refresh" Click="btnRefresh_Click"/>
             <shell:ApplicationBarIconButton x:Name="btnSearch" IconUri="/icons/appbar.feature.search.rest.png" Text="search" Click="btnSearch_Click"/>
+            <shell:ApplicationBarIconButton x:Name="btnSettings" IconUri="/icons/appbar.feature.settings.rest.png" Text="settings" Click="btnSettings_Click"/>
             <shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem x:Name="menuAbout" Text="about" Click="menuAbout_Click"/>
                 <shell:ApplicationBarMenuItem x:Name="menuLogout" Text="logout" Click="menuLogout_Click"/>
