@@ -18,6 +18,17 @@ namespace JabbrPhone
 {
     public partial class App
     {
+        public static string Username
+        {
+            get
+            {
+                if (ChatHub == null) return null;
+                var name = ChatHub["name"] as string;
+                if (name == null) return null;
+                return name;
+            }
+        }
+
         public static HubConnection JabbrConnection { get; set; }
         public static IHubProxy ChatHub { get; set; }
 

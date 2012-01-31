@@ -17,9 +17,11 @@
         <JabbrPhone_Converters:DateTimeConverter x:Key="DateTimeConverter"/>
         <JabbrPhone_Converters:FlagConverter x:Key="FlagConverter"/>
         <JabbrPhone_Converters:ContentConverter x:Key="ContentConverter"/>
+        <JabbrPhone_Converters:MentionHighlightConverter x:Key="MentionHighlightConverter"/>
         <DataTemplate x:Key="MessageItemTemplate">
-			<Grid>
-				<StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,12" Background="Black">
+            <Grid>
+                <StackPanel Background="{Binding IsMentioned, Converter={StaticResource MentionHighlightConverter}}"
+                            HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,12">
 					<StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
 						<Image Height="32" Width="32" Source="{Binding User.Hash, Converter={StaticResource GravatarConverter}}"/>
 						<TextBlock TextWrapping="Wrap" Text="{Binding User.Name}" Margin="6,0,0,0" FontSize="24">

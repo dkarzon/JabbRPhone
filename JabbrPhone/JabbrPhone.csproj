@@ -89,6 +89,7 @@
     <Compile Include="Converters\FlagConverter.cs" />
     <Compile Include="Converters\DateTimeConverter.cs" />
     <Compile Include="Converters\GravatarConverter.cs" />
+    <Compile Include="Converters\MentionHighlightConverter.cs" />
     <Compile Include="Events\PrivateMessageEventArgs.cs" />
     <Compile Include="Extensions\CollectionExtensions.cs" />
     <Compile Include="Extensions\PageExtensions.cs" />
@@ -112,7 +113,6 @@
     <Compile Include="Models\MessageModel.cs" />
     <Compile Include="Models\RoomModel.cs" />
     <Compile Include="Models\UserModel.cs" />
-    <Compile Include="Models\LobbyMessageModel.cs" />
     <Compile Include="ViewModels\RoomViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
