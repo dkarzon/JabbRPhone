@@ -52,6 +52,7 @@ namespace JabbrPhone.Pages
             App.ChatHub.Invoke<RoomModel>("GetRoomInfo", roomName)
                 .ContinueWith((roomTask) =>
                     {
+                        roomTask.Result.CheckOwners();
                         _model.LoadRoom(roomTask.Result);
                         _model.SetStatus("Joining room...", true);
                         JoinRoom();

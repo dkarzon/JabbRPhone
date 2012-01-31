@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls" 
+    xmlns:Coding4Fun_Phone_Controls_Converters="clr-namespace:Coding4Fun.Phone.Controls.Converters;assembly=Coding4Fun.Phone.Controls" 
     xmlns:JabbrPhone_Converters="clr-namespace:JabbrPhone.Converters" 
     xmlns:net="clr-namespace:System.Net;assembly=System.Net"
     x:Class="JabbrPhone.Pages.RoomPage"
@@ -18,6 +19,7 @@
         <JabbrPhone_Converters:FlagConverter x:Key="FlagConverter"/>
         <JabbrPhone_Converters:ContentConverter x:Key="ContentConverter"/>
         <JabbrPhone_Converters:MentionHighlightConverter x:Key="MentionHighlightConverter"/>
+        <Coding4Fun_Phone_Controls_Converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
         <DataTemplate x:Key="MessageItemTemplate">
             <Grid>
                 <StackPanel Background="{Binding IsMentioned, Converter={StaticResource MentionHighlightConverter}}"
@@ -46,6 +48,8 @@
 					<TextBlock TextWrapping="Wrap" Text="{Binding Name}" Margin="12,0,0,0" Foreground="{Binding Brush}"
                                Style="{StaticResource PhoneTextLargeStyle}" FontSize="42.667"/>
                     <Image Margin="12,0,0,0" Source="{Binding Flag, Converter={StaticResource FlagConverter}}" Width="32" Height="22"/>
+                    <TextBlock Visibility="{Binding IsOwner, Converter={StaticResource BooleanToVisibilityConverter}}"
+                               Text="(owner)" Style="{StaticResource PhoneTextLargeStyle}" FontSize="42.667" Foreground="{StaticResource PhoneDisabledBrush}"></TextBlock>
 				</StackPanel>
 			</Grid>
 		</DataTemplate>
