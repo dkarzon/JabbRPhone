@@ -94,11 +94,13 @@
     <Compile Include="Extensions\CollectionExtensions.cs" />
     <Compile Include="Extensions\PageExtensions.cs" />
     <Compile Include="Helpers\DispatcherHelper.cs" />
+    <Compile Include="Helpers\MessageHelper.cs" />
     <Compile Include="Helpers\SettingsHelper.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Events\MessageAddedEventArgs.cs" />
+    <Compile Include="Models\UserInfoModel.cs" />
     <Compile Include="Pages\RoomPage.xaml.cs">
       <DependentUpon>RoomPage.xaml</DependentUpon>
     </Compile>
@@ -114,6 +116,7 @@
     <Compile Include="Models\RoomModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="ViewModels\RoomViewModel.cs" />
+    <Compile Include="ViewModels\SettingsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace JabbrPhone.Models
 {
@@ -21,6 +22,11 @@ namespace JabbrPhone.Models
                 }
                 return false;
             }
+        }
+
+        public List<object> MessageTokens
+        {
+            get { return Helpers.MessageHelper.TokenizeMessage(Content); }
         }
     }
 }

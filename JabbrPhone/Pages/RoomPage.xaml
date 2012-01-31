@@ -37,7 +37,8 @@
 							</TextBlock.Foreground>
 						</TextBlock>
 					</StackPanel>
-                    <TextBlock TextWrapping="Wrap" Text="{Binding Content, Converter={StaticResource ContentConverter}}"/>
+                    <!--<TextBlock TextWrapping="Wrap" Text="{Binding Content, Converter={StaticResource ContentConverter}}"/>-->
+                    <ListBox ItemsSource="{Binding MessageTokens}"></ListBox>
 				</StackPanel>
 			</Grid>
 		</DataTemplate>
