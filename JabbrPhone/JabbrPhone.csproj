@@ -85,6 +85,7 @@
     <Compile Include="App.xaml.jabbr.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Commands\BrowserNavigateCommand.cs" />
     <Compile Include="Converters\ContentConverter.cs" />
     <Compile Include="Converters\IsStringVisConverter.cs" />
     <Compile Include="Converters\IsUriVisConverter.cs" />
