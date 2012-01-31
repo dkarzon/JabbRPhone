@@ -20,7 +20,7 @@ namespace JabbrPhone.Converters
             var highlight = (bool)value;
             if (highlight)
             {
-                return (SolidColorBrush)System.Windows.Application.Current.Resources["PhoneDisabledBrush"];
+                return (SolidColorBrush)System.Windows.Application.Current.Resources["PhoneChromeBrush"];
             }
             else
             {
