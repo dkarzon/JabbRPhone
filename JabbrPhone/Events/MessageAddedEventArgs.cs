@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using JabbrPhone.Models;
 
-namespace JabbrPhone
+namespace JabbrPhone.Events
 {
     public class MessageAddedEventArgs : EventArgs
     {

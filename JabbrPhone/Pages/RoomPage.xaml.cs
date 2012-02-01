@@ -13,6 +13,7 @@ using Microsoft.Phone.Controls;
 using JabbrPhone.Models;
 using JabbrPhone.ViewModels;
 using JabbrPhone.Extensions;
+using JabbrPhone.Events;
 
 namespace JabbrPhone.Pages
 {
@@ -51,6 +52,7 @@ namespace JabbrPhone.Pages
             App.ChatHub.Invoke<RoomModel>("GetRoomInfo", roomName)
                 .ContinueWith((roomTask) =>
                     {
+                        roomTask.Result.CheckOwners();
                         _model.LoadRoom(roomTask.Result);
                         _model.SetStatus("Joining room...", true);
                         JoinRoom();

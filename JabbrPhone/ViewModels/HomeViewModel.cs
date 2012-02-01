@@ -156,16 +156,5 @@ namespace JabbrPhone.ViewModels
             }
         }
 
-        private ObservableCollection<LobbyMessageModel> _lobbyMessages;
-        public ObservableCollection<LobbyMessageModel> LobbyMessages
-        {
-            get { return _lobbyMessages; }
-            set
-            {
-                _lobbyMessages = value;
-                NotifyPropertyChanged("LobbyMessages");
-            }
-        }
-
     }
 }

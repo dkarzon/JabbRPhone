@@ -12,17 +12,20 @@ using System.Windows.Data;
 
 namespace JabbrPhone.Converters
 {
-    public class ContentConverter : IValueConverter
+    public class MentionHighlightConverter : IValueConverter
     {
+
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            if (value == null) return null;
-
-            //This kills the designer for some reason...
-            //return System.Net.HttpUtility.HtmlDecode(value.ToString());
-
-            return Uri.UnescapeDataString(value.ToString());
-			//return value;
+            var highlight = (bool)value;
+            if (highlight)
+            {
+                return (SolidColorBrush)System.Windows.Application.Current.Resources["PhoneChromeBrush"];
+            }
+            else
+            {
+                return (SolidColorBrush)System.Windows.Application.Current.Resources["PhoneBackgroundBrush"];
+            }
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)

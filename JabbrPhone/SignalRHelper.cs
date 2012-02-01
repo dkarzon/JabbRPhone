@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using JabbrPhone.Models;
+using JabbrPhone.Events;
 
 namespace JabbrPhone
 {
@@ -26,5 +27,20 @@ namespace JabbrPhone
             }
         }
 
+
+        public delegate void PrivateMessageEventHandler(object sender, PrivateMessageEventArgs e);
+        public event PrivateMessageEventHandler PrivateMessage;
+        public void OnPrivateMessage(string from, string to, string message)
+        {
+            if (PrivateMessage != null)
+            {
+                PrivateMessage(App.ChatHub, new PrivateMessageEventArgs
+                {
+                    From = from,
+                    To = to,
+                    Message = message
+                });
+            }
+        }
     }
 }

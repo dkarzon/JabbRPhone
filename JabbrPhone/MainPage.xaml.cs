@@ -25,35 +25,19 @@ namespace JabbrPhone
             _model.ShowCreateRoom = false;
             this.DataContext = _model;
 
-            InitializeJabbr();
+            //Not too sure if this should be here or in OnNavigatedTo
+            App.InitializeJabbr(TryJoin);
         }
 
-        private void InitializeJabbr()
+        private void TryJoin(Task startTask)
         {
-            App.JabbrConnection = new HubConnection("http://jabbr.net/");
-            App.ChatHub = App.JabbrConnection.CreateProxy("JabbR.Chat");
+            //TODO - something if Start failed...?
 
-            var id = Storage.SettingsStorage.GetSetting("id");
-
-            if (!string.IsNullOrEmpty(id))
-            {
-                App.ChatHub["id"] = id;
-            }
-
-            _model.SetStatus("Connecting to Server...", true);
-
-            //Setup the signalR events!
-            App.SetupEvents();
-
-            //Server sent events dont work at the moment...
-            App.JabbrConnection.Start(Transport.LongPolling).ContinueWith(startTask =>
-            {
-                App.ChatHub.Invoke<bool>("Join")
-                    .ContinueWith(task =>
-                    {
-                        Join(task);
-                    });
-            });
+            App.ChatHub.Invoke<bool>("Join")
+                .ContinueWith(task =>
+                {
+                    Join(task);
+                });
         }
 
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
@@ -185,7 +169,7 @@ namespace JabbrPhone
 
         private void menuAbout_Click(object sender, System.EventArgs e)
         {
-        	// TODO: Add event handler implementation here.
+        	// TODO - About...?
         }
 
         private void menuLogout_Click(object sender, System.EventArgs e)
@@ -230,6 +214,11 @@ namespace JabbrPhone
 
                     NavigationService.Navigate(new Uri(string.Format("/Pages/RoomPage.xaml?name={0}", newroom), UriKind.RelativeOrAbsolute));
                 });
+        }
+
+        private void btnSettings_Click(object sender, System.EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Pages/SettingsPage.xaml", UriKind.RelativeOrAbsolute));
         }
 
     }

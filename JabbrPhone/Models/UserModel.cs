@@ -12,6 +12,7 @@ namespace JabbrPhone.Models
         public bool IsAfk { get; set; }
         public string Flag { get; set; }
         public string Country { get; set; }
+        public bool IsOwner { get; set; }
 
         public Brush Brush
         {

@@ -12,17 +12,19 @@ using System.Windows.Data;
 
 namespace JabbrPhone.Converters
 {
-    public class ContentConverter : IValueConverter
+    public class IsStringVisConverter : IValueConverter
     {
+
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            if (value == null) return null;
-
-            //This kills the designer for some reason...
-            //return System.Net.HttpUtility.HtmlDecode(value.ToString());
-
-            return Uri.UnescapeDataString(value.ToString());
-			//return value;
+            if (value is string)
+            {
+                return Visibility.Visible;
+            }
+            else
+            {
+                return Visibility.Collapsed;
+            }
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
