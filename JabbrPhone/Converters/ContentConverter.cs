@@ -19,9 +19,9 @@ namespace JabbrPhone.Converters
             if (value == null) return null;
 
             //This kills the designer for some reason...
-            //return System.Net.HttpUtility.HtmlDecode(value.ToString());
+            return System.Net.HttpUtility.HtmlDecode(value.ToString());
 
-            return Uri.UnescapeDataString(value.ToString());
+            //return Uri.UnescapeDataString(value.ToString());
 			//return value;
         }
 

@@ -24,8 +24,6 @@ namespace JabbrPhone.Pages
         public RoomPage()
         {
             InitializeComponent();
-
-            ((App)App.Current).EventManager.MessageAdded += NewMessageAdded;
         }
 
         protected override void OnNavigatedFrom(System.Windows.Navigation.NavigationEventArgs e)
@@ -39,6 +37,8 @@ namespace JabbrPhone.Pages
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
+
+            ((App)App.Current).EventManager.MessageAdded += NewMessageAdded;
 
             var roomName = NavigationContext.QueryString["name"];
 
@@ -87,6 +87,11 @@ namespace JabbrPhone.Pages
 
         private void SendMessage(string content)
         {
+            if (string.IsNullOrWhiteSpace(content)) return;
+
+            //Clear it
+            txtMessage.Text = string.Empty;
+
             _model.SetStatus("Sending...", true);
 
             App.ChatHub.Invoke("Send", content)
@@ -98,6 +103,10 @@ namespace JabbrPhone.Pages
                         try
                         {
                             _model.SetStatus(task.Exception.Message, false, 2000);
+                            Dispatcher.BeginInvoke(() =>
+                            {
+                                txtMessage.Text = content;
+                            });
                         }
                         catch { }
                     }
@@ -129,6 +138,8 @@ namespace JabbrPhone.Pages
 
         private void NewMessageAdded(object sender, MessageAddedEventArgs e)
         {
+            if (_model == null) return;
+
             if (e.RoomName.Equals(_model.Name, StringComparison.OrdinalIgnoreCase))
             {
                 Dispatcher.BeginInvoke(() => _model.Messages.Add(e.Message));
