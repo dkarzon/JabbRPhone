@@ -1,10 +1,10 @@
 ﻿using System;
 using System.ComponentModel;
-using JabbrPhone.Helpers;
+using JabbRPhone.Helpers;
 using Microsoft.Phone.Shell;
 using System.Threading;
 
-namespace JabbrPhone.ViewModels
+namespace JabbRPhone.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {

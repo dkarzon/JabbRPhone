@@ -10,7 +10,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.Windows.Data;
 
-namespace JabbrPhone.Converters
+namespace JabbRPhone.Converters
 {
     public class GravatarConverter : IValueConverter
     {

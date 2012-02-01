@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using JabbrPhone.Models;
+using JabbRPhone.Models;
 
-namespace JabbrPhone.Events
+namespace JabbRPhone.Events
 {
     public class PrivateMessageEventArgs : EventArgs
     {

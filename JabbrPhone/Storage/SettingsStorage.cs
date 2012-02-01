@@ -10,7 +10,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.IO.IsolatedStorage;
 
-namespace JabbrPhone.Storage
+namespace JabbRPhone.Storage
 {
     public class SettingsStorage
     {

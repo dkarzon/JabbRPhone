@@ -10,7 +10,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.Collections.Generic;
 
-namespace JabbrPhone.Models
+namespace JabbRPhone.Models
 {
     /// <summary>
     /// Used for GetUserInfo responses (/who [username])

@@ -7,23 +7,23 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls" 
     xmlns:Coding4Fun_Phone_Controls_Converters="clr-namespace:Coding4Fun.Phone.Controls.Converters;assembly=Coding4Fun.Phone.Controls" 
-    xmlns:JabbrPhone_Converters="clr-namespace:JabbrPhone.Converters" 
-    xmlns:JabbrPhone_Commands="clr-namespace:JabbrPhone.Commands" 
+    xmlns:JabbRPhone_Converters="clr-namespace:JabbRPhone.Converters" 
+    xmlns:JabbRPhone_Commands="clr-namespace:JabbRPhone.Commands" 
     xmlns:net="clr-namespace:System.Net;assembly=System.Net"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
-    x:Class="JabbrPhone.Pages.RoomPage"
+    x:Class="JabbRPhone.Pages.RoomPage"
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
     shell:SystemTray.IsVisible="True">
     <phone:PhoneApplicationPage.Resources>
-        <JabbrPhone_Commands:BrowserNavigateCommand x:Key="BrowserNavigateCommand"></JabbrPhone_Commands:BrowserNavigateCommand>
-    	<JabbrPhone_Converters:IsStringVisConverter x:Key="IsStringVisConverter"/>
-    	<JabbrPhone_Converters:IsUriVisConverter x:Key="IsUriVisConverter"/>
-    	<JabbrPhone_Converters:GravatarConverter x:Key="GravatarConverter"/>
-    	<JabbrPhone_Converters:DateTimeConverter x:Key="DateTimeConverter"/>
-    	<JabbrPhone_Converters:FlagConverter x:Key="FlagConverter"/>
-        <JabbrPhone_Converters:ContentConverter x:Key="ContentConverter"/>
-    	<JabbrPhone_Converters:MentionHighlightConverter x:Key="MentionHighlightConverter"/>
+        <JabbRPhone_Commands:BrowserNavigateCommand x:Key="BrowserNavigateCommand"></JabbRPhone_Commands:BrowserNavigateCommand>
+    	<JabbRPhone_Converters:IsStringVisConverter x:Key="IsStringVisConverter"/>
+    	<JabbRPhone_Converters:IsUriVisConverter x:Key="IsUriVisConverter"/>
+    	<JabbRPhone_Converters:GravatarConverter x:Key="GravatarConverter"/>
+    	<JabbRPhone_Converters:DateTimeConverter x:Key="DateTimeConverter"/>
+    	<JabbRPhone_Converters:FlagConverter x:Key="FlagConverter"/>
+        <JabbRPhone_Converters:ContentConverter x:Key="ContentConverter"/>
+    	<JabbRPhone_Converters:MentionHighlightConverter x:Key="MentionHighlightConverter"/>
     	<Coding4Fun_Phone_Controls_Converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
     	<Style x:Key="HyperlinkButtonStyle1" TargetType="HyperlinkButton">
     		<Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
@@ -60,8 +60,8 @@
     	</Style>
     	<DataTemplate x:Key="MessageContentItemTemplate">
     		<Grid>
-    			<TextBlock Margin="0,0,1,0" TextWrapping="Wrap" Text="{Binding Converter={StaticResource ContentConverter}, Mode=OneWay}" d:LayoutOverrides="Width, Height" Visibility="{Binding Converter={StaticResource IsStringVisConverter}, Mode=OneWay}"/>
-                <HyperlinkButton Content="{Binding Converter={StaticResource ContentConverter}, Mode=OneWay}" d:LayoutOverrides="Width, Height" Visibility="{Binding Converter={StaticResource IsUriVisConverter}, Mode=OneWay}" Style="{StaticResource HyperlinkButtonStyle1}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Command="{StaticResource BrowserNavigateCommand}" CommandParameter="{Binding Mode=OneWay}"/>
+    			<TextBlock Margin="0,0,1,0" TextWrapping="Wrap" Text="{Binding Converter={StaticResource ContentConverter}, Mode=OneWay}" d:LayoutOverrides="Width, Height" Visibility="{Binding Converter={StaticResource IsStringVisConverter}, Mode=OneWay}" FontSize="21.333"/>
+                <HyperlinkButton Content="{Binding Converter={StaticResource ContentConverter}, Mode=OneWay}" d:LayoutOverrides="Width, Height" Visibility="{Binding Converter={StaticResource IsUriVisConverter}, Mode=OneWay}" Style="{StaticResource HyperlinkButtonStyle1}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Command="{StaticResource BrowserNavigateCommand}" CommandParameter="{Binding Mode=OneWay}" FontSize="21.333"/>
     		</Grid>
     	</DataTemplate>
     	<ItemsPanelTemplate x:Key="MessageContentsItemsPanel">

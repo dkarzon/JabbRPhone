@@ -11,7 +11,7 @@ using System.Windows.Shapes;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
 
-namespace JabbrPhone.Extensions
+namespace JabbRPhone.Extensions
 {
     public static class CollectionExtensions
     {

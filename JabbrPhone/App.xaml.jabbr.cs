@@ -9,12 +9,12 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using SignalR.Client.Hubs;
-using JabbrPhone.Models;
+using JabbRPhone.Models;
 using System.Threading.Tasks;
 using SignalR.Client.Transports;
-using JabbrPhone.Helpers;
+using JabbRPhone.Helpers;
 
-namespace JabbrPhone
+namespace JabbRPhone
 {
     public partial class App
     {

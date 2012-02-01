@@ -1,9 +1,9 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
-using JabbrPhone.Extensions;
-using JabbrPhone.Models;
+using JabbRPhone.Extensions;
+using JabbRPhone.Models;
 
-namespace JabbrPhone.ViewModels
+namespace JabbRPhone.ViewModels
 {
     public class HomeViewModel : BaseViewModel
     {

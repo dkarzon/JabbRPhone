@@ -12,12 +12,12 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
-using JabbrPhone.Helpers;
+using JabbRPhone.Helpers;
 using SignalR.Client.Hubs;
-using JabbrPhone.Models;
+using JabbRPhone.Models;
 using System.Threading.Tasks;
 
-namespace JabbrPhone
+namespace JabbRPhone
 {
     public partial class App : Application
     {

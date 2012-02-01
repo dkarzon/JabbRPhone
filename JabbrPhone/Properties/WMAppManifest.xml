@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2009/deployment" AppPlatformVersion="7.1">
-  <App xmlns="" ProductID="{24f8d635-78b5-4b66-bbb7-a9f2d5551fb2}" Title="JabbrPhone" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal"  Author="JabbrPhone author" Description="Sample description" Publisher="JabbrPhone">
+  <App xmlns="" ProductID="{24f8d635-78b5-4b66-bbb7-a9f2d5551fb2}" Title="JabbRPhone" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal"  Author="DK Development" Description="Windows Phone JabbR client" Publisher="JabbRPhone">
     <IconPath IsRelative="true" IsResource="false">ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_GAMERSERVICES"/>
@@ -23,11 +23,11 @@
       <DefaultTask  Name ="_default" NavigationPage="MainPage.xaml"/>
     </Tasks>
     <Tokens>
-      <PrimaryToken TokenID="JabbrPhoneToken" TaskName="_default">
+      <PrimaryToken TokenID="JabbRPhoneToken" TaskName="_default">
         <TemplateType5>
           <BackgroundImageURI IsRelative="true" IsResource="false">Background.png</BackgroundImageURI>
           <Count>0</Count>
-          <Title>JabbrPhone</Title>
+          <Title>JabbRPhone</Title>
         </TemplateType5>
       </PrimaryToken>
     </Tokens>

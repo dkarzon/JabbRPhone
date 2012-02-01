@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace JabbrPhone.Models
+namespace JabbRPhone.Models
 {
     public class RoomModel
     {

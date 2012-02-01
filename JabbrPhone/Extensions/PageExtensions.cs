@@ -11,7 +11,7 @@ using System.Windows.Shapes;
 using Microsoft.Phone.Shell;
 using Microsoft.Phone.Controls;
 
-namespace JabbrPhone.Extensions
+namespace JabbRPhone.Extensions
 {
     public static class PageExtensions
     {

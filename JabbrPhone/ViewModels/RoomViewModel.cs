@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using JabbrPhone.Models;
+using JabbRPhone.Models;
 using System.Collections.ObjectModel;
-using JabbrPhone.Extensions;
+using JabbRPhone.Extensions;
 
-namespace JabbrPhone.ViewModels
+namespace JabbRPhone.ViewModels
 {
     public class RoomViewModel : BaseViewModel
     {

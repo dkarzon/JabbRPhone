@@ -1,5 +1,5 @@
 ﻿<phone:PhoneApplicationPage 
-    x:Class="JabbrPhone.Pages.SettingsPage"
+    x:Class="JabbRPhone.Pages.SettingsPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
@@ -19,14 +19,23 @@
         <!--Pivot Control-->
         <controls:Pivot Title="JABBRPHONE SETTINGS">
             <!--Pivot item one-->
-            <controls:PivotItem Header="server">
-                <Grid/>
+            <!--Pivot item two-->
+            <controls:PivotItem Header="user" Margin="12,0">
+            	<Grid/>
+            </controls:PivotItem>
+            <!--Pivot item one-->
+            <controls:PivotItem Header="server" Margin="12,0">
+                <Grid>
+                	<StackPanel>
+                		<TextBlock TextWrapping="Wrap" Text="server" Margin="12,0"/>
+                		<TextBox TextWrapping="Wrap"/>
+                		<TextBlock TextWrapping="Wrap" Text="ONLINE" Margin="12,12,12,0" FontSize="32" Foreground="#FF069906"/>
+                		<Button Content="Connect" Margin="0,12,0,0"/>
+                	</StackPanel>
+                </Grid>
             </controls:PivotItem>
 
             <!--Pivot item two-->
-            <controls:PivotItem Header="user">
-                <Grid/>
-            </controls:PivotItem>
         </controls:Pivot>
     </Grid>
 

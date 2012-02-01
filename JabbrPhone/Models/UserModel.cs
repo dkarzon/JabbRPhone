@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Media;
 
-namespace JabbrPhone.Models
+namespace JabbRPhone.Models
 {
     public class UserModel
     {

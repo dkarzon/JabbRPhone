@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Coding4Fun.Phone.Controls;
-using JabbrPhone.Extensions;
-using JabbrPhone.Models;
-using JabbrPhone.ViewModels;
+using JabbRPhone.Extensions;
+using JabbRPhone.Models;
+using JabbRPhone.ViewModels;
 using Microsoft.Phone.Controls;
 using SignalR.Client.Hubs;
 using SignalR.Client.Transports;
 using System.Windows.Input;
 
-namespace JabbrPhone
+namespace JabbRPhone
 {
     public partial class MainPage : PhoneApplicationPage
     {

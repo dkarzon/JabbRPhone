@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using JabbrPhone.Models;
-using JabbrPhone.Events;
+using JabbRPhone.Models;
+using JabbRPhone.Events;
 
-namespace JabbrPhone
+namespace JabbRPhone
 {
     public class SignalRHelper
     {

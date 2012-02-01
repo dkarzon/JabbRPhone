@@ -11,7 +11,7 @@ using System.Windows.Shapes;
 using System.Windows.Data;
 using System.Windows.Media.Imaging;
 
-namespace JabbrPhone.Converters
+namespace JabbRPhone.Converters
 {
     public class FlagConverter : IValueConverter
     {

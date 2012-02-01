@@ -10,12 +10,12 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
-using JabbrPhone.Models;
-using JabbrPhone.ViewModels;
-using JabbrPhone.Extensions;
-using JabbrPhone.Events;
+using JabbRPhone.Models;
+using JabbRPhone.ViewModels;
+using JabbRPhone.Extensions;
+using JabbRPhone.Events;
 
-namespace JabbrPhone.Pages
+namespace JabbRPhone.Pages
 {
     public partial class RoomPage : PhoneApplicationPage
     {

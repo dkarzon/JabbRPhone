@@ -10,7 +10,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
-namespace JabbrPhone.Helpers
+namespace JabbRPhone.Helpers
 {
     /// <summary>
     /// Helper class for dispatcher operations on the UI thread.

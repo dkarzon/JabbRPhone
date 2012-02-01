@@ -11,7 +11,7 @@ using System.Windows.Shapes;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace JabbrPhone.Helpers
+namespace JabbRPhone.Helpers
 {
     public static class MessageHelper
     {
