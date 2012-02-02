@@ -51,13 +51,13 @@ namespace JabbRPhone.Pages
 
             App.ChatHub.Invoke<RoomModel>("GetRoomInfo", roomName)
                 .ContinueWith((roomTask) =>
-                    {
-                        roomTask.Result.CheckOwners();
-                        _model.LoadRoom(roomTask.Result);
-                        _model.SetStatus("Joining room...", true);
-                        JoinRoom();
-                        ScrollToLastMessage();
-                    });
+                {
+                    JoinRoom();
+                    roomTask.Result.CheckOwners();
+                    _model.LoadRoom(roomTask.Result);
+                    _model.SetStatus("Joining room...", true);
+                    ScrollToLastMessage();
+                });
         }
 
         private void JoinRoom()
@@ -67,14 +67,14 @@ namespace JabbRPhone.Pages
 
             App.ChatHub.Invoke("Send", string.Format("/join {0}", _model.Name))
                 .ContinueWith((task) =>
-                    {
-                        //done...?
-                        Dispatcher.BeginInvoke(() =>
-                            {
-                                txtMessage.IsEnabled = true;
-                            });
-                        _model.ClearStatus();
-                    });
+                {
+                    //done...?
+                    Dispatcher.BeginInvoke(() =>
+                        {
+                            txtMessage.IsEnabled = true;
+                        });
+                    _model.ClearStatus();
+                });
         }
 
         private void txtMessage_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
