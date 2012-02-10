@@ -18,7 +18,7 @@ namespace JabbRPhone.Converters
         {
             if (value == null)
             {
-                return "http://www.gravatar.com/avatar/00000000000000000000000000000000";
+                return new Uri("/icons/GravatarDefault.jpg", UriKind.Relative);
             }
             return new Uri("https://secure.gravatar.com/avatar/" + value.ToString() +"?d=identicon");
         }

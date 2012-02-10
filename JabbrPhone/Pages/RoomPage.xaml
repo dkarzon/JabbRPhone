@@ -39,152 +39,144 @@
     
     <phone:PhoneApplicationPage.Resources>
         <JabbRPhone_Commands:BrowserNavigateCommand x:Key="BrowserNavigateCommand"></JabbRPhone_Commands:BrowserNavigateCommand>
-    	<JabbRPhone_Converters:IsStringVisConverter x:Key="IsStringVisConverter"/>
-    	<JabbRPhone_Converters:IsUriVisConverter x:Key="IsUriVisConverter"/>
-    	<JabbRPhone_Converters:GravatarConverter x:Key="GravatarConverter"/>
-    	<JabbRPhone_Converters:DateTimeConverter x:Key="DateTimeConverter"/>
-    	<JabbRPhone_Converters:FlagConverter x:Key="FlagConverter"/>
+        <JabbRPhone_Converters:IsStringVisConverter x:Key="IsStringVisConverter"/>
+        <JabbRPhone_Converters:IsUriVisConverter x:Key="IsUriVisConverter"/>
+        <JabbRPhone_Converters:GravatarConverter x:Key="GravatarConverter"/>
+        <JabbRPhone_Converters:DateTimeConverter x:Key="DateTimeConverter"/>
+        <JabbRPhone_Converters:FlagConverter x:Key="FlagConverter"/>
         <JabbRPhone_Converters:ContentConverter x:Key="ContentConverter"/>
-    	<JabbRPhone_Converters:MentionHighlightConverter x:Key="MentionHighlightConverter"/>
-    	<Coding4Fun_Phone_Controls_Converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
-    	<Style x:Key="HyperlinkButtonStyle1" TargetType="HyperlinkButton">
-    		<Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
-    		<Setter Property="Background" Value="Transparent"/>
-    		<Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMedium}"/>
-    		<Setter Property="Padding" Value="0"/>
-    		<Setter Property="Template">
-    			<Setter.Value>
-    				<ControlTemplate TargetType="HyperlinkButton">
-    					<Border Background="Transparent">
-    						<VisualStateManager.VisualStateGroups>
-    							<VisualStateGroup x:Name="CommonStates">
-    								<VisualState x:Name="Normal"/>
-    								<VisualState x:Name="MouseOver"/>
-    								<VisualState x:Name="Pressed">
-    									<Storyboard>
-    										<DoubleAnimation Duration="0" To="0.5" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="TextElement"/>
-    									</Storyboard>
-    								</VisualState>
-    								<VisualState x:Name="Disabled">
-    									<Storyboard>
-    										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="TextElement">
-    											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}"/>
-    										</ObjectAnimationUsingKeyFrames>
-    									</Storyboard>
-    								</VisualState>
-    							</VisualStateGroup>
-    						</VisualStateManager.VisualStateGroups>
-    						<TextBlock x:Name="TextElement" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Text="{TemplateBinding Content}" TextDecorations="Underline" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-    					</Border>
-    				</ControlTemplate>
-    			</Setter.Value>
-    		</Setter>
-    	</Style>
-    	<DataTemplate x:Key="MessageContentItemTemplate">
-    		<Grid>
-    			<TextBlock Margin="0,0,1,0" TextWrapping="Wrap" Text="{Binding Converter={StaticResource ContentConverter}, Mode=OneWay}" d:LayoutOverrides="Width, Height" Visibility="{Binding Converter={StaticResource IsStringVisConverter}, Mode=OneWay}" FontSize="21.333"/>
+        <JabbRPhone_Converters:MentionHighlightConverter x:Key="MentionHighlightConverter"/>
+        <Coding4Fun_Phone_Controls_Converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        <Style x:Key="HyperlinkButtonStyle1" TargetType="HyperlinkButton">
+            <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMedium}"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="HyperlinkButton">
+                        <Border Background="Transparent">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="MouseOver"/>
+                                    <VisualState x:Name="Pressed">
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0" To="0.5" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="TextElement"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Disabled">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="TextElement">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <TextBlock x:Name="TextElement" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Text="{TemplateBinding Content}" TextDecorations="Underline" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <DataTemplate x:Key="MessageContentItemTemplate">
+            <Grid>
+                <TextBlock Margin="0,0,1,0" TextWrapping="Wrap" Text="{Binding Converter={StaticResource ContentConverter}, Mode=OneWay}" d:LayoutOverrides="Width, Height" Visibility="{Binding Converter={StaticResource IsStringVisConverter}, Mode=OneWay}" FontSize="21.333"/>
                 <HyperlinkButton Content="{Binding Converter={StaticResource ContentConverter}, Mode=OneWay}" d:LayoutOverrides="Width, Height" Visibility="{Binding Converter={StaticResource IsUriVisConverter}, Mode=OneWay}" Style="{StaticResource HyperlinkButtonStyle1}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Command="{StaticResource BrowserNavigateCommand}" CommandParameter="{Binding Mode=OneWay}" FontSize="21.333"/>
-    		</Grid>
-    	</DataTemplate>
-    	<ItemsPanelTemplate x:Key="MessageContentsItemsPanel">
-    		<toolkit:WrapPanel/>
-    	</ItemsPanelTemplate>
-    	<Style x:Key="MessageContentsStyle" TargetType="ListBox">
-    		<Setter Property="Background" Value="Transparent"/>
-    		<Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
-    		<Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
-    		<Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
-    		<Setter Property="BorderThickness" Value="0"/>
-    		<Setter Property="BorderBrush" Value="Transparent"/>
-    		<Setter Property="Padding" Value="0"/>
-    		<Setter Property="Template">
-    			<Setter.Value>
-    				<ControlTemplate TargetType="ListBox">
-    					<Grid Background="{TemplateBinding Background}">
-    						<ItemsPresenter/>
-    					</Grid>
-    				</ControlTemplate>
-    			</Setter.Value>
-    		</Setter>
-    	</Style>
-    	<DataTemplate x:Key="MessageItemTemplate">
-    		<Grid>
-    			<StackPanel Background="{Binding IsMentioned, Converter={StaticResource MentionHighlightConverter}}"
-    				HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,12">
-    				<StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="0,0,6,0">
-    					<Image Height="32" Width="32" Source="{Binding User.Hash, Converter={StaticResource GravatarConverter}}" Margin="0,-2,0,0"/>
-    					<TextBlock TextWrapping="Wrap" Text="{Binding User.Name}" Margin="12,0,0,0" FontSize="26.667" FontFamily="Segoe WP Semibold">
-    						<TextBlock.Foreground>
-    							<SolidColorBrush Color="{StaticResource PhoneAccentColor}"/>
-    						</TextBlock.Foreground>
-    					</TextBlock>
-    					<TextBlock TextWrapping="Wrap" Text="{Binding When, Converter={StaticResource DateTimeConverter}}" Margin="12,0,0,0" FontSize="26.667">
-    						<TextBlock.Foreground>
-    							<SolidColorBrush Color="{StaticResource PhoneDisabledColor}"/>
-    						</TextBlock.Foreground>
-    					</TextBlock>
-    				</StackPanel>
+            </Grid>
+        </DataTemplate>
+        <ItemsPanelTemplate x:Key="MessageContentsItemsPanel">
+            <toolkit:WrapPanel/>
+        </ItemsPanelTemplate>
+        <Style x:Key="MessageContentsStyle" TargetType="ListBox">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBox">
+                        <Grid Background="{TemplateBinding Background}">
+                            <ItemsPresenter/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <DataTemplate x:Key="MessageItemTemplate">
+            <Grid>
+                <StackPanel Background="{Binding IsMentioned, Converter={StaticResource MentionHighlightConverter}}"
+                    HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,12">
+                    <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="0,0,6,0">
+                        <Image Height="32" Width="32" Source="{Binding User.Hash, Converter={StaticResource GravatarConverter}}" Margin="0,-2,0,0"/>
+                        <TextBlock TextWrapping="Wrap" Text="{Binding User.Name}" Margin="12,0,0,0" FontSize="26.667" FontFamily="Segoe WP Semibold">
+                            <TextBlock.Foreground>
+                                <SolidColorBrush Color="{StaticResource PhoneAccentColor}"/>
+                            </TextBlock.Foreground>
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap" Text="{Binding When, Converter={StaticResource DateTimeConverter}}" Margin="12,0,0,0" FontSize="26.667">
+                            <TextBlock.Foreground>
+                                <SolidColorBrush Color="{StaticResource PhoneDisabledColor}"/>
+                            </TextBlock.Foreground>
+                        </TextBlock>
+                    </StackPanel>
                     <!--<TextBlock TextWrapping="Wrap" Text="{Binding Content, Converter={StaticResource ContentConverter}}"/>-->
-    				<ListBox ItemsSource="{Binding MessageTokens}" ItemTemplate="{StaticResource MessageContentItemTemplate}" ItemsPanel="{StaticResource MessageContentsItemsPanel}" Style="{StaticResource MessageContentsStyle}" Margin="0,0,6,6"/>
-    			</StackPanel>
-    		</Grid>
-    	</DataTemplate>
-    	<DataTemplate x:Key="UsersDataTemplate">
-    		<Grid Margin="0,0,0,24">
-    			<StackPanel Orientation="Horizontal">
-    				<Image Source="{Binding Hash, Converter={StaticResource GravatarConverter}}" Width="56" Height="56"/>
-    				<TextBlock TextWrapping="Wrap" Text="{Binding Name}" Margin="12,0,0,0" Foreground="{Binding Brush}"
-    					Style="{StaticResource PhoneTextLargeStyle}" FontSize="42.667"/>
-    				<Image Margin="12,0,0,0" Source="{Binding Flag, Converter={StaticResource FlagConverter}}" Width="32" Height="22"/>
-    				<TextBlock Visibility="{Binding IsOwner, Converter={StaticResource BooleanToVisibilityConverter}}"
-    					Text="(owner)" Style="{StaticResource PhoneTextLargeStyle}" FontSize="42.667" Foreground="{StaticResource PhoneDisabledBrush}"/>
-    			</StackPanel>
-    		</Grid>
-    	</DataTemplate>
-	</phone:PhoneApplicationPage.Resources>
- 
-    <!--Sample code showing usage of ApplicationBar-->
-    <!--<phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
-            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="Button 1"/>
-            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button2.png" Text="Button 2"/>
-            <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem Text="MenuItem 1"/>
-                <shell:ApplicationBarMenuItem Text="MenuItem 2"/>
-            </shell:ApplicationBar.MenuItems>
-        </shell:ApplicationBar>
-    </phone:PhoneApplicationPage.ApplicationBar>-->
+                    <ListBox ItemsSource="{Binding MessageTokens}" ItemTemplate="{StaticResource MessageContentItemTemplate}" ItemsPanel="{StaticResource MessageContentsItemsPanel}" Style="{StaticResource MessageContentsStyle}" Margin="0,0,6,6"/>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="UsersDataTemplate">
+            <Grid Margin="0,0,0,24">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="{Binding Hash, Converter={StaticResource GravatarConverter}}" Width="56" Height="56"/>
+                    <TextBlock TextWrapping="Wrap" Text="{Binding Name}" Margin="12,0,0,0" Foreground="{Binding Brush}"
+                        Style="{StaticResource PhoneTextLargeStyle}" FontSize="42.667"/>
+                    <Image Margin="12,0,0,0" Source="{Binding Flag, Converter={StaticResource FlagConverter}}" Width="32" Height="22"/>
+                    <TextBlock Visibility="{Binding IsOwner, Converter={StaticResource BooleanToVisibilityConverter}}"
+                        Text="(owner)" Style="{StaticResource PhoneTextLargeStyle}" FontSize="42.667" Foreground="{StaticResource PhoneDisabledBrush}"/>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+    </phone:PhoneApplicationPage.Resources>
 
-	<phone:PhoneApplicationPage.FontFamily>
-		<StaticResource ResourceKey="PhoneFontFamilyNormal"/>
-	</phone:PhoneApplicationPage.FontFamily>
-	<phone:PhoneApplicationPage.FontSize>
-		<StaticResource ResourceKey="PhoneFontSizeNormal"/>
-	</phone:PhoneApplicationPage.FontSize>
-	<phone:PhoneApplicationPage.Foreground>
-		<StaticResource ResourceKey="PhoneForegroundBrush"/>
-	</phone:PhoneApplicationPage.Foreground>
+    <phone:PhoneApplicationPage.FontFamily>
+        <StaticResource ResourceKey="PhoneFontFamilyNormal"/>
+    </phone:PhoneApplicationPage.FontFamily>
+    <phone:PhoneApplicationPage.FontSize>
+        <StaticResource ResourceKey="PhoneFontSizeNormal"/>
+    </phone:PhoneApplicationPage.FontSize>
+    <phone:PhoneApplicationPage.Foreground>
+        <StaticResource ResourceKey="PhoneForegroundBrush"/>
+    </phone:PhoneApplicationPage.Foreground>
 
-    <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent" d:DataContext="{d:DesignData /SampleData/RoomViewModelSampleData.xaml}">
         <Grid.RowDefinitions>
-        	<RowDefinition Height="768"/>
+            <RowDefinition Height="768"/>
         </Grid.RowDefinitions>
 
-    	<controls:Pivot Margin="0,12,0,0" Title="">
-    		<controls:PivotItem Header="{Binding Name}" Margin="12,0">
-    			<Grid Margin="0,12,0,0">
-    				<ListBox x:Name="lsbMessages" Margin="12,0,0,72" ItemsSource="{Binding Messages}" ItemTemplate="{StaticResource MessageItemTemplate}"/>
-                    <TextBox InputScope="Text" x:Name="txtMessage" TextWrapping="Wrap" VerticalAlignment="Bottom" d:LayoutOverrides="Width" KeyUp="txtMessage_KeyUp"/>
-    			</Grid>
-    		</controls:PivotItem>
-    		<controls:PivotItem Header="users" Margin="12,0">
-    			<Grid>
-    				<ListBox x:Name="lsbUsers" Margin="12,0,0,0" ItemsSource="{Binding Users}" ItemTemplate="{StaticResource UsersDataTemplate}"/>
-    			</Grid>
-    		</controls:PivotItem>
-    	</controls:Pivot>
-    	<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="ROOM" VerticalAlignment="Top" Margin="24,12,0,0"/>
+        <controls:Pivot Margin="0,12,0,0" Title="">
+            <controls:PivotItem Header="{Binding Name}" Margin="12,0">
+                <Grid Margin="0,12,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    
+                    <ListBox Grid.Row="0" x:Name="lsbMessages" Margin="12,0,0,72" ItemsSource="{Binding Messages}" ItemTemplate="{StaticResource MessageItemTemplate}"/>
+                    <TextBox Grid.Row="1" InputScope="Text" x:Name="txtMessage" TextWrapping="Wrap" VerticalAlignment="Bottom" d:LayoutOverrides="Width" KeyUp="txtMessage_KeyUp"/>
+                </Grid>
+            </controls:PivotItem>
+            <controls:PivotItem Header="users" Margin="12,0">
+                <Grid>
+                    <ListBox x:Name="lsbUsers" Margin="12,0,0,0" ItemsSource="{Binding Users}" ItemTemplate="{StaticResource UsersDataTemplate}"/>
+                </Grid>
+            </controls:PivotItem>
+        </controls:Pivot>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="ROOM" VerticalAlignment="Top" Margin="24,12,0,0"/>
     </Grid>
 
 </phone:PhoneApplicationPage>
