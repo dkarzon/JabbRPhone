@@ -14,6 +14,7 @@ using JabbRPhone.Models;
 using JabbRPhone.ViewModels;
 using JabbRPhone.Extensions;
 using JabbRPhone.Events;
+using JabbRPhone.Helpers;
 
 namespace JabbRPhone.Pages
 {
@@ -41,9 +42,10 @@ namespace JabbRPhone.Pages
             ((App)App.Current).EventManager.MessageAdded += NewMessageAdded;
 
             var roomName = NavigationContext.QueryString["name"];
-            var inviteCode = NavigationContext.QueryString["inviteCode"];
+            string inviteCode = null;
+            NavigationContext.QueryString.TryGetValue("inviteCode", out inviteCode);
 
-            _model = new RoomViewModel(roomName);
+            _model = new RoomViewModel(roomName, inviteCode);
             _model.Prog = this.GetProgressIndicator();
             this.DataContext = _model;
 
@@ -66,15 +68,27 @@ namespace JabbRPhone.Pages
             //Set this to the active room
             App.ChatHub["activeRoom"] = _model.Name;
 
-            App.ChatHub.Invoke("Send", string.Format("/join {0}", _model.Name))
+            App.ChatHub.Invoke("Send", string.Format("/join {0} {1}", _model.Name, _model.InviteCode))
                 .ContinueWith((task) =>
                 {
                     //done...?
-                    Dispatcher.BeginInvoke(() =>
-                        {
-                            txtMessage.IsEnabled = true;
-                        });
-                    _model.ClearStatus();
+                    if (task.Status == System.Threading.Tasks.TaskStatus.RanToCompletion)
+                    {
+                        Dispatcher.BeginInvoke(() =>
+                            {
+                                txtMessage.IsEnabled = true;
+                            });
+                        _model.ClearStatus();
+                    }
+                    else if (task.Status == System.Threading.Tasks.TaskStatus.Faulted)
+                    {
+                        // Couldn't join room. What up?
+                        DispatcherHelper.SafeDispatch(() => 
+                            {
+                                MessageBox.Show("Couldn't join the room.\n\nAre you sure the details are correct?", "Oops!", MessageBoxButton.OK);
+                                NavigationService.SafeGoBack();
+                            });
+                    }
                 });
         }
 

@@ -7,6 +7,16 @@ namespace JabbRPhone.ViewModels
 {
     public class RoomViewModel : BaseViewModel
     {
+        public RoomViewModel(string name)
+            : this(name, null)
+        { }
+
+        public RoomViewModel(string name, string inviteCode)
+        {
+            Name = name;
+            InviteCode = inviteCode;
+        }
+
         private string _name;
         public string Name
         {
@@ -15,6 +25,17 @@ namespace JabbRPhone.ViewModels
             {
                 _name = value;
                 NotifyPropertyChanged("Name");
+            }
+        }
+
+        private string _inviteCode;
+        public string InviteCode
+        {
+            get { return _inviteCode; }
+            set
+            {
+                _inviteCode = value;
+                NotifyPropertyChanged("InviteCode");
             }
         }
 
@@ -38,11 +59,6 @@ namespace JabbRPhone.ViewModels
                 _users = value;
                 NotifyPropertyChanged("Users");
             }
-        }
-
-        public RoomViewModel(string name)
-        {
-            Name = name;
         }
 
         internal void LoadRoom(RoomModel room)

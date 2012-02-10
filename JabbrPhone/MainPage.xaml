@@ -143,6 +143,26 @@
                 </StackPanel>
             </ScrollViewer>
         </Grid>
+        <Grid Name="JoinPrivateRoomGrid" Grid.Row="1" Background="#CC000000" Visibility="{Binding ShowJoinPrivateRoom, Converter={StaticResource BooleanToVisibilityConverter}}" d:IsHidden="True">
+            <ScrollViewer>
+                <StackPanel Margin="0" Width="480" VerticalAlignment="Top">
+                    <StackPanel.Background>
+                        <SolidColorBrush Color="{StaticResource PhoneChromeColor}"/>
+                    </StackPanel.Background>
+                    <TextBlock TextWrapping="Wrap" Text="JOIN PRIVATE ROOM" Style="{StaticResource PhoneTextTitle1Style}" FontSize="66.667">
+                        <TextBlock.Foreground>
+                            <SolidColorBrush Color="{StaticResource PhoneAccentColor}"/>
+                        </TextBlock.Foreground>
+                    </TextBlock>
+                    <TextBlock TextWrapping="Wrap" Text="Room name" Style="{StaticResource PhoneTextTitle3Style}" Margin="12"/>
+                    <TextBox TextWrapping="Wrap" InputScope="Default" Text="{Binding PrivateRoomName, Mode=TwoWay}"/>
+                    <TextBlock TextWrapping="Wrap" Text="Invite Code" Style="{StaticResource PhoneTextTitle3Style}" Margin="12"/>
+                    <TextBox TextWrapping="Wrap" InputScope="Default" Text="{Binding PrivateRoomInviteCode, Mode=TwoWay}"/>
+                    <TextBlock TextWrapping="Wrap" Text="{Binding JoinPrivateRoomMessage}" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                    <Button x:Name="btn_JoinPrivateRoom" Content="Join" Click="btn_JoinPrivateRoom_Click"/>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
     </Grid>
 
 </phone:PhoneApplicationPage>

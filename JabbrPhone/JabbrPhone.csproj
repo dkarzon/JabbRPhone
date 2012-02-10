@@ -97,6 +97,7 @@
     <Compile Include="Converters\MentionHighlightConverter.cs" />
     <Compile Include="Events\PrivateMessageEventArgs.cs" />
     <Compile Include="Extensions\CollectionExtensions.cs" />
+    <Compile Include="Extensions\NavigationServiceExtensions.cs" />
     <Compile Include="Extensions\PageExtensions.cs" />
     <Compile Include="Helpers\DispatcherHelper.cs" />
     <Compile Include="Helpers\MessageHelper.cs" />

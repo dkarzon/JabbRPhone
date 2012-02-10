@@ -223,12 +223,26 @@ namespace JabbRPhone
 
         private void btnJoinPrivateRoom_Click(object sender, EventArgs e)
         {
-            // Ask for room name and invite code
+            _model.ShowJoinPrivateRoom = true;
+        }
 
-            // var roomName = "";
-            // var inviteCode = "";
+        private void btn_JoinPrivateRoom_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(_model.PrivateRoomName))
+            {
+                _model.JoinPrivateRoomMessage = "Please enter a room name.";
+                return;
+            }
 
-            // NavigationService.Navigate(new Uri(string.Format("/Pages/RoomPage.xaml?name={0}&inviteCode={1}", roomName, inviteCode), UriKind.RelativeOrAbsolute));
+            if (string.IsNullOrEmpty(_model.PrivateRoomInviteCode))
+            {
+                _model.JoinPrivateRoomMessage = "Please enter an invite code.";
+                return;
+            }
+
+            _model.ShowJoinPrivateRoom = false;
+
+            NavigationService.Navigate(new Uri(string.Format("/Pages/RoomPage.xaml?name={0}&inviteCode={1}", _model.PrivateRoomName, _model.PrivateRoomInviteCode), UriKind.RelativeOrAbsolute));
         }
     }
 }
