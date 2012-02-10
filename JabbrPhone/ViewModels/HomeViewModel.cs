@@ -70,6 +70,7 @@ namespace JabbRPhone.ViewModels
                 NotifyPropertyChanged("CreateRoomName");
             }
         }
+
         private string _createroommessage;
         public string CreateRoomMessage
         {
@@ -80,6 +81,51 @@ namespace JabbRPhone.ViewModels
                 NotifyPropertyChanged("CreateRoomMessage");
             }
         }
+
+        private string _privateRoomName;
+        public string PrivateRoomName
+        {
+            get { return _privateRoomName; }
+            set
+            {
+                _privateRoomName = value;
+                NotifyPropertyChanged("PrivateRoomName");
+            }
+        }
+
+        private string _privateRoomInviteCode;
+        public string PrivateRoomInviteCode
+        {
+            get { return _privateRoomInviteCode; }
+            set
+            {
+                _privateRoomInviteCode = value;
+                NotifyPropertyChanged("PrivateRoomInviteCode");
+            }
+        }
+
+        private bool _showJoinPrivateRoom;
+        public bool ShowJoinPrivateRoom
+        {
+            get { return _showJoinPrivateRoom; }
+            set
+            {
+                _showJoinPrivateRoom = value;
+                NotifyPropertyChanged("ShowJoinPrivateRoom");
+            }
+        }
+
+        private string _joinPrivateRoomMessage;
+        public string JoinPrivateRoomMessage
+        {
+            get { return _joinPrivateRoomMessage; }
+            set
+            {
+                _joinPrivateRoomMessage = value;
+                NotifyPropertyChanged("JoinPrivateRoomMessage");
+            }
+        }
+
 
         private string _loginusername;
         public string LoginUsername
