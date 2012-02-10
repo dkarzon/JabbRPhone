@@ -64,15 +64,16 @@
       <HintPath>..\packages\SilverlightToolkitWP.4.2011.12.13\lib\sl4-windowsphone71\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Phone.Interop" />
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.4.0.4\lib\sl3-wp\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=4.0.7.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.4.0.7\lib\sl4-windowsphone71\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="SignalR.Client.WP7">
-      <HintPath>..\lib\SignalR.Client.WP7.dll</HintPath>
+    <Reference Include="SignalR.Client.WP7, Version=0.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SignalR.Client.WP7.0.4.0.0\lib\sl4-wp71\SignalR.Client.WP7.dll</HintPath>
     </Reference>
     <Reference Include="System.Net" />
-    <Reference Include="System.Threading.Tasks.WP71">
-      <HintPath>..\lib\System.Threading.Tasks.WP71.dll</HintPath>
+    <Reference Include="System.Threading.Tasks.WP71, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.2.1.2\lib\sl4-wp71\System.Threading.Tasks.WP71.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows" />
     <Reference Include="system" />
@@ -97,6 +98,7 @@
     <Compile Include="Converters\MentionHighlightConverter.cs" />
     <Compile Include="Events\PrivateMessageEventArgs.cs" />
     <Compile Include="Extensions\CollectionExtensions.cs" />
+    <Compile Include="Extensions\NavigationServiceExtensions.cs" />
     <Compile Include="Extensions\PageExtensions.cs" />
     <Compile Include="Helpers\DispatcherHelper.cs" />
     <Compile Include="Helpers\MessageHelper.cs" />
@@ -142,6 +144,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml" />
@@ -907,6 +910,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="icons\GravatarDefault.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="icons\lock.invert.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="icons\lock.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="SplashScreenImage.jpg" />

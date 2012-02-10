@@ -221,6 +221,28 @@ namespace JabbRPhone
             NavigationService.Navigate(new Uri("/Pages/SettingsPage.xaml", UriKind.RelativeOrAbsolute));
         }
 
-    }
+        private void btnJoinPrivateRoom_Click(object sender, EventArgs e)
+        {
+            _model.ShowJoinPrivateRoom = true;
+        }
 
+        private void btn_JoinPrivateRoom_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(_model.PrivateRoomName))
+            {
+                _model.JoinPrivateRoomMessage = "Please enter a room name.";
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_model.PrivateRoomInviteCode))
+            {
+                _model.JoinPrivateRoomMessage = "Please enter an invite code.";
+                return;
+            }
+
+            _model.ShowJoinPrivateRoom = false;
+
+            NavigationService.Navigate(new Uri(string.Format("/Pages/RoomPage.xaml?name={0}&inviteCode={1}", _model.PrivateRoomName, _model.PrivateRoomInviteCode), UriKind.RelativeOrAbsolute));
+        }
+    }
 }
