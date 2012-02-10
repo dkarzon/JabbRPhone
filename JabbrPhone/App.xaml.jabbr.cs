@@ -78,7 +78,7 @@ namespace JabbRPhone
             SetupEvents();
 
             //Server sent events dont work at the moment...
-            App.JabbrConnection.Start(Transport.LongPolling)
+            App.JabbrConnection.Start()
                 .ContinueWith(startContinue);
         }
 
