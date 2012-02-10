@@ -179,7 +179,7 @@ namespace JabbRPhone
             App.ChatHub.Invoke("Send", "/logout")
                 .ContinueWith(task =>
                     {
-                        Storage.SettingsStorage.SaveSetting("id", null);
+                        Storage.SettingsStorage.SaveSetting<string>("id", null);
 
                         _model.IsLoggedIn = false;
                         _model.ShowLogin = true;
