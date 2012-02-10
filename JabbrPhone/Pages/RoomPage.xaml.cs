@@ -41,6 +41,7 @@ namespace JabbRPhone.Pages
             ((App)App.Current).EventManager.MessageAdded += NewMessageAdded;
 
             var roomName = NavigationContext.QueryString["name"];
+            var inviteCode = NavigationContext.QueryString["inviteCode"];
 
             _model = new RoomViewModel(roomName);
             _model.Prog = this.GetProgressIndicator();

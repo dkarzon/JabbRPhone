@@ -41,23 +41,17 @@
         <Coding4Fun_Phone_Controls_Converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
         <DataTemplate x:Key="RoomsItemTemplate">
             <Grid>
-                <StackPanel Orientation="Horizontal" Margin="0,0,0,12">
-                    <TextBlock TextWrapping="Wrap" Text="{Binding Name}" VerticalAlignment="Top" FontFamily="Segoe WP Semibold" FontSize="42.667" Margin="0,2,0,0"/>
-                    <TextBlock TextWrapping="Wrap" FontSize="37.333" Margin="12,0,0,0" Text="(">
-                        <TextBlock.Foreground>
-                            <SolidColorBrush Color="{StaticResource PhoneDisabledColor}"/>
-                        </TextBlock.Foreground>
-                    </TextBlock>
-                    <TextBlock TextWrapping="Wrap" Text="{Binding Count}" FontSize="37.333" Margin="0">
-                        <TextBlock.Foreground>
-                            <SolidColorBrush Color="{StaticResource PhoneDisabledColor}"/>
-                        </TextBlock.Foreground>
-                    </TextBlock>
-                    <TextBlock TextWrapping="Wrap" FontSize="37.333" Margin="0" Text=")">
-                        <TextBlock.Foreground>
-                            <SolidColorBrush Color="{StaticResource PhoneDisabledColor}"/>
-                        </TextBlock.Foreground>
-                    </TextBlock>
+                <StackPanel Orientation="Horizontal" Margin="0,0,12,12" VerticalAlignment="Center">
+                    <Rectangle Width="16" Height="21" Fill="{StaticResource PhoneForegroundBrush}" Margin="10" Visibility="{Binding Private, Converter={StaticResource BooleanToVisibilityConverter}}">
+                        <Rectangle.OpacityMask>
+                            <ImageBrush ImageSource="/icons/lock.png" Stretch="Fill" />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                    
+                    <TextBlock TextWrapping="Wrap" Text="{Binding Name}" FontFamily="Segoe WP Semibold" FontSize="42.667" Margin="0,2,0,0"/>
+                    <TextBlock TextWrapping="Wrap" FontSize="37.333" Margin="12,0,0,0" Text="(" Foreground="{StaticResource PhoneDisabledBrush}"/>
+                    <TextBlock TextWrapping="Wrap" Text="{Binding Count}" FontSize="37.333" Margin="0" Foreground="{StaticResource PhoneDisabledBrush}"/>
+                    <TextBlock TextWrapping="Wrap" FontSize="37.333" Margin="0" Text=")" Foreground="{StaticResource PhoneDisabledBrush}"/>
                 </StackPanel>
             </Grid>
         </DataTemplate>
@@ -69,10 +63,11 @@
             <shell:ApplicationBarIconButton x:Name="btnCreateRoom" IconUri="/icons/appbar.add.rest.png" Text="create room" Click="btnCreateRoom_Click"/>
             <shell:ApplicationBarIconButton x:Name="btnRefresh" IconUri="/icons/appbar.refresh.rest.png" Text="refresh" Click="btnRefresh_Click"/>
             <shell:ApplicationBarIconButton x:Name="btnSearch" IconUri="/icons/appbar.feature.search.rest.png" Text="search" Click="btnSearch_Click"/>
-            <shell:ApplicationBarIconButton x:Name="btnSettings" IconUri="/icons/appbar.feature.settings.rest.png" Text="settings" Click="btnSettings_Click"/>
+            <shell:ApplicationBarIconButton x:Name="btnJoinPrivateRoom" IconUri="/icons/lock.invert.png" Click="btnJoinPrivateRoom_Click" Text="join private room" />
             <shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem x:Name="menuAbout" Text="about" Click="menuAbout_Click"/>
                 <shell:ApplicationBarMenuItem x:Name="menuLogout" Text="logout" Click="menuLogout_Click"/>
+                <shell:ApplicationBarMenuItem x:Name="btnSettings" Text="settings" Click="btnSettings_Click"/>
             </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
@@ -94,8 +89,6 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!--ContentPanel - place additional content here-->
-<!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="0" Visibility="{Binding ShowRooms, Converter={StaticResource BooleanToVisibilityConverter}}">
             <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="JABBRPHONE v0.1" VerticalAlignment="Top" Margin="12,12,0,0" FontSize="18.667"/>
             <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="rooms" VerticalAlignment="Top" Style="{StaticResource PhoneTextTitle2Style}" Margin="12,20,0,0" FontSize="72">
