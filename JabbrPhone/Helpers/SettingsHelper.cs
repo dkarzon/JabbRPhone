@@ -15,7 +15,7 @@ namespace JabbRPhone.Helpers
     {
         public static string GetServerUrl()
         {
-            var serverurl = Storage.SettingsStorage.GetSetting("serverurl");
+            var serverurl = Storage.SettingsStorage.GetSetting<string>("serverurl");
             if (string.IsNullOrEmpty(serverurl))
             {
                 //default

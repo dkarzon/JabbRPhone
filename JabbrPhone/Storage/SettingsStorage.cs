@@ -14,19 +14,19 @@ namespace JabbRPhone.Storage
 {
     public class SettingsStorage
     {
-        public static string GetSetting(string key)
+        public static T GetSetting<T>(string key)
         {
             if (IsolatedStorageSettings.ApplicationSettings.Contains(key))
             {
-                return IsolatedStorageSettings.ApplicationSettings[key].ToString();
+                return (T)IsolatedStorageSettings.ApplicationSettings[key];
             }
             else
             {
-                return "";
+                return default(T);
             }
         }
 
-        public static void SaveSetting(string key, string value)
+        public static void SaveSetting<T>(string key, T value)
         {
             if (IsolatedStorageSettings.ApplicationSettings.Contains(key))
             {
@@ -36,6 +36,8 @@ namespace JabbRPhone.Storage
             {
                 IsolatedStorageSettings.ApplicationSettings.Add(key, value);
             }
+
+            IsolatedStorageSettings.ApplicationSettings.Save();
         }
     }
 }
