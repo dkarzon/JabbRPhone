@@ -67,7 +67,7 @@ namespace JabbRPhone
             App.JabbrConnection = new HubConnection(SettingsHelper.GetServerUrl());
             App.ChatHub = App.JabbrConnection.CreateProxy("JabbR.Chat");
 
-            var id = Storage.SettingsStorage.GetSetting("id");
+            var id = Storage.SettingsStorage.GetSetting<string>("id");
 
             if (!string.IsNullOrEmpty(id))
             {
