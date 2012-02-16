@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Coding4Fun.Phone.Controls;
 using JabbRPhone.Extensions;
-using JabbRPhone.Models;
 using JabbRPhone.ViewModels;
 using Microsoft.Phone.Controls;
 using SignalR.Client.Hubs;
@@ -24,25 +23,13 @@ namespace JabbRPhone
             _model = new HomeViewModel();
             _model.ShowCreateRoom = false;
             this.DataContext = _model;
-
-            //Not too sure if this should be here or in OnNavigatedTo
-            App.InitializeJabbr(TryJoin);
-        }
-
-        private void TryJoin(Task startTask)
-        {
-            //TODO - something if Start failed...?
-
-            App.ChatHub.Invoke<bool>("Join")
-                .ContinueWith(task =>
-                {
-                    Join(task);
-                });
         }
 
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
+
+            Join();
 
             if (_model != null && _model.Prog == null)
             {
@@ -66,21 +53,14 @@ namespace JabbRPhone
             }
         }
 
-        private void Join(Task<bool> task)
+        private void Join()
         {
-            if (task.Result)
-            {
-                //GREAT SUCCESS!
-                _model.IsLoggedIn = true;
-                _model.ShowLogin = false;
-                _model.ShowRooms = true;
-                //Load rooms
-                LoadRooms();
+            var id = Storage.SettingsStorage.GetSetting<string>("id");
 
-                Dispatcher.BeginInvoke(() =>
-                    {
-                        ApplicationBar.IsVisible = true;
-                    });
+            if (!string.IsNullOrEmpty(id))
+            {
+                App.Client.Connect(id)
+                    .ContinueWith(task => JoinContinue(task));
             }
             else
             {
@@ -93,10 +73,37 @@ namespace JabbRPhone
             }
         }
 
+        private void JoinContinue(Task<JabbR.Client.Models.LogOnInfo> task)
+        {
+            if (task.IsFaulted)
+            {
+                _model.ShowLogin = true;
+                Dispatcher.BeginInvoke(() =>
+                {
+                    ApplicationBar.IsVisible = false;
+                });
+                _model.ClearStatus();
+            }
+            else
+            {
+                //GREAT SUCCESS!
+                _model.IsLoggedIn = true;
+                _model.ShowLogin = false;
+                _model.ShowRooms = true;
+                //Load rooms
+                LoadRooms();
+
+                Dispatcher.BeginInvoke(() =>
+                {
+                    ApplicationBar.IsVisible = true;
+                });
+            }
+        }
+
         private void LoadRooms()
         {
             _model.SetStatus("Loading rooms...", true);
-            App.ChatHub.Invoke<List<RoomModel>>("GetRooms")
+            App.Client.GetRooms()
                 .ContinueWith(task =>
                     {
                         _model.Rooms = task.Result.ToObservableCollection();
@@ -114,15 +121,15 @@ namespace JabbRPhone
 
             _model.SetStatus("Logging in...", true);
 
-            App.ChatHub.Invoke("Send", string.Format("/nick {0} {1}", _model.LoginUsername, _model.LoginPassword))
+            App.Client.Connect(_model.LoginUsername, _model.LoginPassword)
                 .ContinueWith(task =>
                     {
-                        if (App.ChatHub["id"] != null)
+                        if (App.Client.UserId != null)
                         {
                             _model.IsLoggedIn = true;
                             _model.ShowLogin = false;
                             _model.ShowRooms = true;
-                            Storage.SettingsStorage.SaveSetting("id", App.ChatHub["id"].ToString());
+                            Storage.SettingsStorage.SaveSetting("id", App.Client.UserId);
                             //Now try and load rooms
                             LoadRooms();
                             Dispatcher.BeginInvoke(() =>
@@ -142,7 +149,7 @@ namespace JabbRPhone
         {
             if (e.AddedItems.Count <= 0) return;
 
-            var room = e.AddedItems[0] as RoomModel;
+            var room = e.AddedItems[0] as JabbR.Client.Models.Room;
 
             if (room == null) return;
 
@@ -176,7 +183,7 @@ namespace JabbRPhone
         {
             _model.SetStatus("Logging out...", true);
 
-            App.ChatHub.Invoke("Send", "/logout")
+            App.Client.LogOut()
                 .ContinueWith(task =>
                     {
                         Storage.SettingsStorage.SaveSetting<string>("id", null);
@@ -204,7 +211,8 @@ namespace JabbRPhone
             }
 
             _model.SetStatus("Creating room...", true);
-            App.ChatHub.Invoke("Send", string.Format("/create {0}", newroom))
+
+            App.Client.CreateRoom(newroom)
                 .ContinueWith((task) =>
                 {
                     //done...?

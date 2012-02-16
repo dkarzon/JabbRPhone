@@ -10,10 +10,8 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
-using JabbRPhone.Models;
 using JabbRPhone.ViewModels;
 using JabbRPhone.Extensions;
-using JabbRPhone.Events;
 using JabbRPhone.Helpers;
 
 namespace JabbRPhone.Pages
@@ -32,14 +30,14 @@ namespace JabbRPhone.Pages
             base.OnNavigatedFrom(e);
 
             //Stop listening for the event (Sometimes caused duplicate messages)
-            ((App)App.Current).EventManager.MessageAdded -= NewMessageAdded;
+            App.Client.MessageReceived -= NewMessageAdded;
         }
 
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
 
-            ((App)App.Current).EventManager.MessageAdded += NewMessageAdded;
+            App.Client.MessageReceived += NewMessageAdded;
 
             var roomName = NavigationContext.QueryString["name"];
             string inviteCode = null;
@@ -52,11 +50,11 @@ namespace JabbRPhone.Pages
             _model.SetStatus("Loading room...", true);
             txtMessage.IsEnabled = false;
 
-            App.ChatHub.Invoke<RoomModel>("GetRoomInfo", roomName)
+            App.Client.GetRoomInfo(roomName)
                 .ContinueWith((roomTask) =>
                 {
                     JoinRoom();
-                    roomTask.Result.CheckOwners();
+                    //roomTask.Result.CheckOwners();
                     _model.LoadRoom(roomTask.Result);
                     _model.SetStatus("Joining room...", true);
                     ScrollToLastMessage();
@@ -65,10 +63,11 @@ namespace JabbRPhone.Pages
 
         private void JoinRoom()
         {
+            //TODO - Active room
             //Set this to the active room
-            App.ChatHub["activeRoom"] = _model.Name;
+            //App.ChatHub["activeRoom"] = _model.Name;
 
-            App.ChatHub.Invoke("Send", string.Format("/join {0} {1}", _model.Name, _model.InviteCode))
+            App.Client.JoinRoom(_model.Name, _model.InviteCode)
                 .ContinueWith((task) =>
                 {
                     //done...?
@@ -109,7 +108,7 @@ namespace JabbRPhone.Pages
 
             _model.SetStatus("Sending...", true);
 
-            App.ChatHub.Invoke("Send", content)
+            App.Client.Send(content, _model.Name)
                 .ContinueWith((task) =>
                 {
                     //Add this 1 to the list?
@@ -151,13 +150,13 @@ namespace JabbRPhone.Pages
         }
 
 
-        private void NewMessageAdded(object sender, MessageAddedEventArgs e)
+        private void NewMessageAdded(JabbR.Client.Models.Message message, string room)
         {
             if (_model == null) return;
 
-            if (e.RoomName.Equals(_model.Name, StringComparison.OrdinalIgnoreCase))
+            if (room.Equals(_model.Name, StringComparison.OrdinalIgnoreCase))
             {
-                Dispatcher.BeginInvoke(() => _model.Messages.Add(e.Message));
+                Dispatcher.BeginInvoke(() => _model.Messages.Add(new MessageViewModel(message)));
                 ScrollToLastMessage();
             }
         }

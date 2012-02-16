@@ -14,7 +14,6 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using JabbRPhone.Helpers;
 using SignalR.Client.Hubs;
-using JabbRPhone.Models;
 using System.Threading.Tasks;
 
 namespace JabbRPhone
@@ -61,7 +60,7 @@ namespace JabbRPhone
                 PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
             }
 
-            EventManager = new SignalRHelper();
+            InitializeJabbr();
 
             DispatcherHelper.Initialize();
         }

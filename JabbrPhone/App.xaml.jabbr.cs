@@ -9,10 +9,10 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using SignalR.Client.Hubs;
-using JabbRPhone.Models;
 using System.Threading.Tasks;
 using SignalR.Client.Transports;
 using JabbRPhone.Helpers;
+using JabbR.Client;
 
 namespace JabbRPhone
 {
@@ -22,65 +22,31 @@ namespace JabbRPhone
         {
             get
             {
-                if (ChatHub == null) return null;
-                var name = ChatHub["name"] as string;
-                if (name == null) return null;
-                return name;
+                if (Client == null) return null;
+                return Client.UserName;
             }
         }
 
-        public static HubConnection JabbrConnection { get; set; }
-        public static IHubProxy ChatHub { get; set; }
+        public static JabbRClient Client { get; set; }
 
         /// <summary>
-        /// A helper class that managers server events across the app
+        /// This method initialises the JabbR.Client connection to the server and Starts it
         /// </summary>
-        public SignalRHelper EventManager { get; set; }
-
-        /// <summary>
-        /// This method should be run before the signalR connection is started
-        /// to subscribe to the events
-        /// </summary>
-        internal static void SetupEvents()
+        /// <param name="connectContinue"></param>
+        internal static void InitializeJabbr()
         {
-            App.ChatHub.On<MessageModel, string>("AddMessage",
-                (message, roomName) =>
-                {
-                    ((App)App.Current).EventManager.OnNewMessage(message, roomName);
-                });
-
-            App.ChatHub.On<string, string, string>("sendPrivateMessage",
-                (from, to, message) =>
-                {
-                    ((App)App.Current).EventManager.OnPrivateMessage(from, to, message);
-                });
-
-            //Other events we need to watch?
+            App.Client = new JabbRClient(SettingsHelper.GetServerUrl());
         }
 
-        /// <summary>
-        /// This method initialises the signalR connection to the server and Starts it
-        /// </summary>
-        /// <param name="startContinue"></param>
-        internal static void InitializeJabbr(Action<Task> startContinue)
+        internal static void ConnectJabbr(Action<Task> connectContinue)
         {
-            App.JabbrConnection = new HubConnection(SettingsHelper.GetServerUrl());
-            App.ChatHub = App.JabbrConnection.CreateProxy("JabbR.Chat");
-
             var id = Storage.SettingsStorage.GetSetting<string>("id");
 
             if (!string.IsNullOrEmpty(id))
             {
-                App.ChatHub["id"] = id;
+                App.Client.Connect(id)
+                    .ContinueWith(connectContinue);
             }
-
-            //Setup the signalR events!
-            SetupEvents();
-
-            //Server sent events dont work at the moment...
-            App.JabbrConnection.Start()
-                .ContinueWith(startContinue);
         }
-
     }
 }

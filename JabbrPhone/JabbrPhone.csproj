@@ -58,6 +58,9 @@
     <Reference Include="Coding4Fun.Phone.Controls.Toolkit">
       <HintPath>..\packages\Coding4Fun.Phone.Controls.Complete.1.5.1\lib\Coding4Fun.Phone.Controls.Toolkit.dll</HintPath>
     </Reference>
+    <Reference Include="JabbR.Client.WP7">
+      <HintPath>..\lib\JabbR.Client.WP7.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Phone" />
     <Reference Include="Microsoft.Phone.Controls, Version=7.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Phone.Controls.Toolkit, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b772ad94eb9ca604, processorArchitecture=MSIL">
@@ -69,11 +72,11 @@
       <HintPath>..\packages\Newtonsoft.Json.4.0.7\lib\sl4-windowsphone71\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="SignalR.Client.WP7, Version=0.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SignalR.Client.WP7.0.4.0.0\lib\sl4-wp71\SignalR.Client.WP7.dll</HintPath>
+      <HintPath>..\lib\SignalR.Client.WP7.dll</HintPath>
     </Reference>
     <Reference Include="System.Net" />
     <Reference Include="System.Threading.Tasks.WP71, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Threading.Tasks.2.1.2\lib\sl4-wp71\System.Threading.Tasks.WP71.dll</HintPath>
+      <HintPath>..\lib\System.Threading.Tasks.WP71.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows" />
     <Reference Include="system" />
@@ -96,7 +99,6 @@
     <Compile Include="Converters\DateTimeConverter.cs" />
     <Compile Include="Converters\GravatarConverter.cs" />
     <Compile Include="Converters\MentionHighlightConverter.cs" />
-    <Compile Include="Events\PrivateMessageEventArgs.cs" />
     <Compile Include="Extensions\CollectionExtensions.cs" />
     <Compile Include="Extensions\NavigationServiceExtensions.cs" />
     <Compile Include="Extensions\PageExtensions.cs" />
@@ -106,8 +108,6 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Events\MessageAddedEventArgs.cs" />
-    <Compile Include="Models\UserInfoModel.cs" />
     <Compile Include="Pages\RoomPage.xaml.cs">
       <DependentUpon>RoomPage.xaml</DependentUpon>
     </Compile>
@@ -115,13 +115,11 @@
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SignalRHelper.cs" />
     <Compile Include="Storage\SettingsStorage.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
-    <Compile Include="Models\MessageModel.cs" />
-    <Compile Include="Models\RoomModel.cs" />
-    <Compile Include="Models\UserModel.cs" />
+    <Compile Include="ViewModels\MessageViewModel.cs" />
+    <Compile Include="ViewModels\RoomUserViewModel.cs" />
     <Compile Include="ViewModels\RoomViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
   </ItemGroup>

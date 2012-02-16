@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using JabbRPhone.Models;
 using System.Collections.ObjectModel;
 using JabbRPhone.Extensions;
+using System.Linq;
 
 namespace JabbRPhone.ViewModels
 {
@@ -39,8 +39,8 @@ namespace JabbRPhone.ViewModels
             }
         }
 
-        private ObservableCollection<MessageModel> _messages;
-        public ObservableCollection<MessageModel> Messages
+        private ObservableCollection<MessageViewModel> _messages;
+        public ObservableCollection<MessageViewModel> Messages
         {
             get { return _messages; }
             set
@@ -50,8 +50,8 @@ namespace JabbRPhone.ViewModels
             }
         }
 
-        private ObservableCollection<UserModel> _users;
-        public ObservableCollection<UserModel> Users
+        private ObservableCollection<RoomUserViewModel> _users;
+        public ObservableCollection<RoomUserViewModel> Users
         {
             get { return _users; }
             set
@@ -61,12 +61,12 @@ namespace JabbRPhone.ViewModels
             }
         }
 
-        internal void LoadRoom(RoomModel room)
+        internal void LoadRoom(JabbR.Client.Models.Room room)
         {
             Name = room.Name;
 
-            Messages = room.RecentMessages.ToObservableCollection();
-            Users = room.Users.ToObservableCollection();
+            Messages = room.RecentMessages.Select(m => new MessageViewModel(m)).ToObservableCollection();
+            Users = room.Users.Select(u => new RoomUserViewModel(u, room.Owners.Contains(u.Name))).OrderBy(u => u.IsOwner).ToObservableCollection();
         }
     }
 }

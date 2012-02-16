@@ -1,7 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
 using JabbRPhone.Extensions;
-using JabbRPhone.Models;
 
 namespace JabbRPhone.ViewModels
 {
@@ -181,8 +180,8 @@ namespace JabbRPhone.ViewModels
             }
         }
 
-        private ObservableCollection<RoomModel> _allRooms;
-        public ObservableCollection<RoomModel> Rooms
+        private ObservableCollection<JabbR.Client.Models.Room> _allRooms;
+        public ObservableCollection<JabbR.Client.Models.Room> Rooms
         {
             get
             {
