@@ -63,10 +63,6 @@ namespace JabbRPhone.Pages
 
         private void JoinRoom()
         {
-            //TODO - Active room
-            //Set this to the active room
-            //App.ChatHub["activeRoom"] = _model.Name;
-
             App.Client.JoinRoom(_model.Name, _model.InviteCode)
                 .ContinueWith((task) =>
                 {

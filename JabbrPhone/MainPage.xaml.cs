@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Coding4Fun.Phone.Controls;
 using JabbRPhone.Extensions;
 using JabbRPhone.ViewModels;
 using Microsoft.Phone.Controls;
