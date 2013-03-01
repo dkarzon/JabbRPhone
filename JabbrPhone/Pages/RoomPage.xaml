@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls" 
-    xmlns:Coding4Fun_Phone_Controls_Converters="clr-namespace:Coding4Fun.Phone.Controls.Converters;assembly=Coding4Fun.Phone.Controls" 
+    xmlns:Coding4Fun_Toolkit_Controls_Converters="clr-namespace:Coding4Fun.Toolkit.Controls.Converters;assembly=Coding4Fun.Toolkit.Controls" 
     xmlns:JabbRPhone_Converters="clr-namespace:JabbRPhone.Converters" 
     xmlns:JabbRPhone_Commands="clr-namespace:JabbRPhone.Commands" 
     xmlns:net="clr-namespace:System.Net;assembly=System.Net"
@@ -46,7 +46,7 @@
         <JabbRPhone_Converters:FlagConverter x:Key="FlagConverter"/>
         <JabbRPhone_Converters:ContentConverter x:Key="ContentConverter"/>
         <JabbRPhone_Converters:MentionHighlightConverter x:Key="MentionHighlightConverter"/>
-        <Coding4Fun_Phone_Controls_Converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        <Coding4Fun_Toolkit_Controls_Converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
         <Style x:Key="HyperlinkButtonStyle1" TargetType="HyperlinkButton">
             <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
             <Setter Property="Background" Value="Transparent"/>

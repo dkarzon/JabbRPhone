@@ -15,11 +15,12 @@ namespace JabbRPhone.Helpers
     {
         public static string GetServerUrl()
         {
+            return "http://jabbr-staging.apphb.com/";
             var serverurl = Storage.SettingsStorage.GetSetting<string>("serverurl");
             if (string.IsNullOrEmpty(serverurl))
             {
                 //default
-                return "http://jabbr.net/";
+                return "http://jabbr-staging.apphb.com/";
             }
             return serverurl;
         }

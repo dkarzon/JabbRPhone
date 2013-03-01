@@ -8,9 +8,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
-using SignalR.Client.Hubs;
 using System.Threading.Tasks;
-using SignalR.Client.Transports;
 using JabbRPhone.Helpers;
 using JabbR.Client;
 
@@ -22,8 +20,7 @@ namespace JabbRPhone
         {
             get
             {
-                if (Client == null) return null;
-                return Client.UserName;
+                return "TEST";
             }
         }
 

@@ -4,8 +4,6 @@ using System.Threading.Tasks;
 using JabbRPhone.Extensions;
 using JabbRPhone.ViewModels;
 using Microsoft.Phone.Controls;
-using SignalR.Client.Hubs;
-using SignalR.Client.Transports;
 using System.Windows.Input;
 
 namespace JabbRPhone
@@ -123,12 +121,12 @@ namespace JabbRPhone
             App.Client.Connect(_model.LoginUsername, _model.LoginPassword)
                 .ContinueWith(task =>
                     {
-                        if (App.Client.UserId != null)
+                        if (task.Status == TaskStatus.RanToCompletion) //?
                         {
                             _model.IsLoggedIn = true;
                             _model.ShowLogin = false;
                             _model.ShowRooms = true;
-                            Storage.SettingsStorage.SaveSetting("id", App.Client.UserId);
+                            Storage.SettingsStorage.SaveSetting("id", task.Result.UserId);
                             //Now try and load rooms
                             LoadRooms();
                             Dispatcher.BeginInvoke(() =>

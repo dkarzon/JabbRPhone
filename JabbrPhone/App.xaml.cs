@@ -13,7 +13,6 @@ using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using JabbRPhone.Helpers;
-using SignalR.Client.Hubs;
 using System.Threading.Tasks;
 
 namespace JabbRPhone

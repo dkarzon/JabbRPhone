@@ -63,7 +63,7 @@ namespace JabbRPhone.Pages
 
         private void JoinRoom()
         {
-            App.Client.JoinRoom(_model.Name, _model.InviteCode)
+            App.Client.JoinRoom(_model.Name)
                 .ContinueWith((task) =>
                 {
                     //done...?
